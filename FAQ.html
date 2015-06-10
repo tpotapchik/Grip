@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<html lang="en" xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Cache-control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>Smarter Takeout</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=100">
+    <!--<link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet' type='text/css'>-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+
+    <link href="order/Content/css/normalize.css" rel="stylesheet"/>
+    <link href="order/Content/css/datepicker.css" rel="stylesheet"/>
+    <link href="order/Content/css/bootstrap-timepicker.css" rel="stylesheet"/>
+
+    <link href="order/Content/Site.css" rel="stylesheet"/>
+
+    <script src="order/Scripts/libs/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+
+    <script src="order/Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+    <script src="order/Scripts/modernizr-2.6.2.js"></script>
+    <script src="order/Scripts/libs/modernizr-2.6.2-custom.js"></script>
+
+
+    <script src="order/bundles/modernizr?v=vDRj3L7j8c0oVwcr5naO37v2EF_wmuRlhPc_Cbe3L-41"></script>
+
+    <link href="order/LocalSettings/rink/styles/rink_style.css" rel="stylesheet"/>
+
+    <script src="https://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        _uacct = "UA-2254943-1";
+        urchinTracker();
+    </script>
+
+</head>
+<body>
+
+
+<div class="ci-page-bg-visual ci-bg-rosemary">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-basilicum">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-tomatoes">&nbsp;</div>
+
+<section style="height: 100%; min-height: 100%">
+    <div class="fixbg">
+
+
+        <script type="text/javascript">
+            (function (d) {
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement('script');
+                js.id = id;
+                js.async = true;
+                js.src = document.location.protocol + "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+            window.fbAsyncInit = function () {
+                var isLoginClick = false;
+                FB.init({appId: '501365963275166', status: true, cookie: true, xfbml: true});
+                FB.Event.subscribe('auth.statusChange', function (response) {
+                    if (response.authResponse) {
+                        // user has auth'd your app and is logged into Facebook
+                        FB.api('/me', function (me) {
+                            if (me.name) {
+                                document.getElementById('nameUser').value = me.name;
+                                document.getElementById('emailUser').value = me.email;
+                                document.getElementById('auth-email').innerHTML = me.email;
+                                document.getElementById('auth-displayname').innerHTML = me.name;
+                                document.getElementById('nameUsermobile').value = me.name;
+                                document.getElementById('emailUsermobile').value = me.email;
+                                document.getElementById('auth-emailmobile').innerHTML = me.email;
+                                document.getElementById('auth-displaynamemobile').innerHTML = me.name;
+                                if (isLoginClick) {
+                                    $("#loginToSiteBtn").click();
+                                    $("#loginToSiteBtnmobile").click();
+                                }
+                            } else {
+                                isLoginClick = false;
+                            }
+
+                        });
+                        document.getElementById('auth-loggedout').style.display = 'none';
+                        document.getElementById('auth-loggedin').style.display = 'block';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'none';
+                        document.getElementById('auth-loggedinmobile').style.display = 'block';
+                    } else {
+                        // user has not auth'd your app, or is not logged into Facebook
+                        document.getElementById('auth-loggedout').style.display = 'block';
+                        document.getElementById('auth-loggedin').style.display = 'none';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'block';
+                        document.getElementById('auth-loggedinmobile').style.display = 'none';
+                        isLoginClick = false;
+                    }
+                });
+                $("#auth-logoutlink").click(function () {
+                    FB.logout(function () {
+                        window.location.reload();
+                    });
+                });
+                $("#lgtoFB").click(function () {
+                    FB.login(function () {
+                        isLoginClick = true;
+                    }, {scope: 'email'});
+                });
+                $("#lgtosite").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtn").click();
+                });
+                $("#auth-logoutlinkmobile").click(function () {
+                    FB.logout(function () {
+                        window.location.reload();
+                    });
+                });
+                $("#lgtoFBmobile").click(function () {
+                    FB.login(function () {
+                        isLoginClick = true;
+                    }, {scope: 'email'});
+                });
+                $("#lgtositemobile").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtnmobile").click();
+                });
+            };
+        </script>
+        <div class="pageWrap index-page">
+
+            <header>
+
+                <div class="mobile">
+
+                    <div class="mobile-main-header">
+
+                        <div class="menu-left">
+                            <div class="menu-left-icon"></div>
+
+                        </div>
+                        <div id="branding" role="banner">
+                            <div class="ci-content-positioner">
+                                <a rel="home" href="#">
+                                    <img width="135" height="36" class="ci-sitelogo ci-sitelogo-rpg " alt="PRG logo" src="order/LocalSettings/rink/images/prg-logo.png"></a>
+
+                                <a rel="home" href="#">
+                                    <img width="95" height="89" class="ci-sitelogo ci-sitelogo-main" alt="Logo" src="order/LocalSettings/rink/images/logo.png"></a>
+
+                                <div class="ci-clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-in">
+                            <a href="#">Sign In</a>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="mobile-steps-bg">
+                        <span class="step"> Step 1 - <span class="step-mob">Registration</span></span>
+                    </div>
+
+                </div>
+
+
+                <section class="clearfix">
+
+
+                    <a href="#" class="logo"></a>
+
+                    <div height="103px" style="width:">
+
+                        <div style="display: inline; height:103px">
+                            <iframe src="order/LocalSettings/rink/controls/header.html" frameborder="0"
+                                    style="overflow:hidden;overflow-x:hidden;overflow-y:hidden; height: 103px ;width:100%;position:absolute;z-index:0; top:0px;left:0px;right:0px;bottom:0px" scrolling="no"></iframe>
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </header>
+
+            <div id="wrap">
+                <div id="panel">
+                    <div class="pageBlock">
+                        <div class="envelopeBoxes clearfix">
+                            <div class="asideBox">
+                                <div class="logo">
+                                    <img src="https://therinkatrockcenter.com:443/Files/images/content-logo.png" alt="">
+                                </div>
+                                <div class="packagesBox">
+                                    <div class="clear">
+                                    </div>
+                                    <div class="infoBox">
+                                        <h4>PATINA RESTAURANT GROUP AT ROCK CENTER&nbsp;</h4>
+
+                                        <h4>
+                                            <span style="font-family: Calibri, sans-serif; font-size: 11pt; line-height: 1.6em;">Offering excitement year-round through&nbsp;a brand-new line up of exclusive activities and events!&nbsp;</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="navBox">
+                                </div>
+                            </div>
+                            <div class="rightContentBox">
+
+                                <h1><span>FREQUENTLY ASKED QUESTIONS/RINK PACKAGES</span></h1>
+
+                                <div style="font-size: 12px; padding-bottom: 12px; padding-top: 10px; padding-left: 15px;
+                            margin-top: 15px; letter-spacing: 0px; line-height: 16px; padding-right: 15px">
+                                    <h2 style="color: rgb(120,90,20); text-align: center; padding-top: 5px">
+                                        General Rink Questions</h2>
+
+                                    <div style="text-align: center">
+                                        &nbsp;</div>
+
+                                    <strong>Q:
+                                        How do we buy skate tickets for General Admission?<br>
+                                        A:</strong>
+                                    General Admission skating is on a first come, first serve basis. If there is a line,
+                                    everyone in your party must wait in line together to purchase tickets.
+
+                                    Our peak holiday season is from Friday November 7th through January 6th and during
+                                    this time period, lines are likely to be long for all sessions. During the busy
+                                    holiday season you should anticipate an approximate one hour wait. Please note that
+                                    you do wait outdoors.
+
+                                    We recommend coming for our early 8:30 am – 10 am session if possible - lines are
+                                    typically shortest first thing in the morning.
+
+                                    To avoid the lines completely, you may now make reservations to skate through our
+                                    VIP SKATE or FIRST SKATE packages.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        When is the Rink open?<br>
+                                        A:</strong>
+                                    We are open daily for 90 minute sessions. 8:30-10:00AM, 10:30AM-12:00PM,
+                                    12:30-2:00PM, 2:30-4:00PM, 4:30-6:00PM, 6:30-8:00PM, 8:30-10:00PM, and
+                                    10:30PM-12:00AM.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do you have group rates?<br>
+                                        A:</strong>
+                                    We do have group rates if you can join us anytime between opening day and November
+                                    6th or from January 7th through the day we close the rink for the season.
+
+                                    <br><br><b>We do NOT offer group rates in our peak holiday season: Friday November
+                                    7th through January 6th. </b>
+
+                                    <br><br>Rates for group skating are: Adults: $15, Children: $10, Skate Rental: $8.
+                                    This requires a 15 person minimum. Please contact us at
+                                    <a href="mailto:therink@patinagroup.com ?Subject=Group%20Skating" target="_top">
+                                        therink@patinagroup.com </a>to make your booking.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do you have Skating Lessons?<br>
+                                        A:</strong>
+                                    Private lesson are available at a cost of $50.00 for 30 minutes of private
+                                    instructions plus the full session of skating. Skate rentals, if needed, are an
+                                    additional $12.00 charge. Reservations are recommended. Please email
+                                    <a href="mailto:therink@patinagroup.com?Subject=Private%20Lessons" target="_top">
+                                        therink@patinagroup.com</a> to reserve a skating lesson.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Can I bring my own skates?<br>
+                                        A:</strong>
+                                    Yes, but speed skates are not allowed.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do your skates run big or small?<br>
+                                        A:</strong>
+                                    Skates are whole sizes only, true to size. Just let us know your regular shoe size,
+                                    we know how to determine the proper skate sizes.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Is there an age limit to skate?<br>
+                                        A:</strong>
+                                    No, there is no age restrictions for skating. Children under 6 must be accompanied
+                                    by an adult.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do you have skates for small kids? What is the biggest size?<br>
+                                        A:</strong>
+                                    Yes, our smallest skate is a baby 6 and our largest skate is men's 14.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Can you get a season pass for the rink?<br>
+                                        A:</strong>
+                                    Yes, you can. (Season Pass with a locker $450, Season Pass Only $275, Locker Rental
+                                    Only $175). To become a session pass holder, please contact us at
+                                    <a href="mailto:colsen@patinagroup.com" target="_blank">therink@patinagroup.com</a>.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Can we have our child’s birthday party at the rink?<br>
+                                        A:</strong>
+                                    Yes, you can. We love birthday parties! Our birthday packages are available from
+                                    opening day in October through November 6th and again, from January 7th until the
+                                    day we close the rink for the season. We do not have these packages available during
+                                    our peak holiday season from November 7th through January 6th.<br><br> To make your
+                                    birthday party reservation or for more information, please contact us at
+                                    <a href="mailto:therink@patinagroup.com?Subject=Birthday%20Parties" target="_top">
+                                        therink@patinagroup.com</a>.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What if it rains or snows?<br>
+                                        A:</strong>
+                                    The Rink is open during all inclement weather conditions.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Are toddlers free?<br>
+                                        A:</strong>
+                                    Admission is free for children under 4, but all skate rentals must be paid for,
+                                    regardless of age.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What is considered a senior citizen?<br>
+                                        A:</strong>
+                                    Senior citizens are 65 and up.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do you have figure skates and/or hockey skates?<br>
+                                        A:</strong>
+                                    We only have figure skates.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What happens is there are only 15 minutes left in the skate session I purchased
+                                        tickets for?<br>
+                                        A:</strong>
+                                    You can continue to skate in the next session. Just remember to keep your ticket and
+                                    do not return your rented skates.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do you give a military or student discount?<br>
+                                        A:</strong>
+                                    We do not offer student discounts, but we are proud to offer military discounts to
+                                    both active United States armed service personnel and all United States veterans.
+                                    The discount is 15% for both General Admission skating and skate rentals. Please
+                                    have your military ID and available for our cashiers when you are here purchasing
+                                    tickets. ID must be presented and valid to receive the 15% discount.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Who can I contact for press and media inquiries?<br>
+                                        A:</strong>
+                                    Please contact
+                                    <a href="mailto:shinjung@nicholaslence.com" ?subject="Rink%20Press%Inquiry" target="_top">Shin-Jung
+                                        Hong</a> of Nicholas &amp; Lence Communications with any media inquiries.<br>
+                                    <br>
+
+                                </div>
+
+                                <h1><span>FREQUENTLY ASKED QUESTIONS/RINK PACKAGES</span></h1>
+
+                                <div style="font-size: 12px; padding-bottom: 12px; padding-top: 10px; padding-left: 15px;
+                            margin-top: 15px; letter-spacing: 0px; line-height: 16px; padding-right: 15px">
+                                    <h2 style="color: rgb(120,90,20); text-align: center; padding-top: 5px">
+                                        ENGAGEMENT ON ICE</h2>
+
+                                    <div style="text-align: center">
+                                        &nbsp;</div>
+
+                                    <strong>Q:
+                                        How do I get my tickets?<br>
+                                        A:</strong>
+                                    When your reservation is complete and we have received all your information, your
+                                    tickets will be emailed to you.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        How should I get you my CD?<br>
+                                        A:</strong>
+                                    You can do this one of two ways:
+                                    1) Send it to us using any mail carrier service available that will provide you with
+                                    a "proof of signature" option. (We recommend FedEx or UPS). This ensures that your
+                                    magical song gets safely into our hands. Should your CD be lost in transit, we
+                                    cannot accept responsibility for this and want to make this a truly special day for
+                                    you. For this option, please send to:
+
+                                    The Rink at Rock Center/General Manager
+                                    Rockefeller Center
+                                    Patina Restaurant Group
+                                    600 5th Avenue, Building 17, Office 6
+                                    New York, NY 10020
+
+                                    OR
+
+                                    2) You may ask for a RINK MANAGER at our General Admission skate house and hand it
+                                    to them personally. Please ensure you ask a Manager as we need to secure it for you
+                                    accordingly.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What if there is a long line for skating?<br>
+                                        A:</strong>
+                                    Tickets for Engagement-On-Ice are uniquely designed for this package, and everyone
+                                    who works at The Rink knows how to spot them. You will receive these tickets via
+                                    email as well as instructions on how to bypass any waiting line.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        When exactly do I propose during my skating session?<br>
+                                        A:</strong>
+                                    Each skating session is 1 ½ hours long, and your proposal takes place at the end of
+                                    your skate session. For example, if you book a 10:30 AM session, you will make your
+                                    proposal at 12PM. In preparation for your proposal, we will take a few minutes to
+                                    clear everyone from the ice (except you).<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        How can I make sure my soon-to-be fiancé is completely surprised by my proposal?<br>
+                                        A:</strong>
+                                    When you confirm your reservation, we will send you a map for easy navigating,
+                                    additional information and tips on how to drop off your CD, and choreograph your
+                                    skate session and proposal all without your soon-to-be fiancé ever suspecting a
+                                    thing.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What if it rains or there is inclement weather?<br>
+                                        A:</strong>
+                                    The Rink remains open during all inclement weather conditions. If you would like to
+                                    change or reschedule your special day far in advance, please let us know as soon as
+                                    possible as many sessions become sold out. The engagement packages are very limited
+                                    in regard to availability and we want to work with you as best as we can but are
+                                    restricted in many cases.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Will I get my money back if I cancel?<br>
+                                        A:</strong>
+                                    We can only issue refunds in the case of rain, and if you were unable to reschedule.<br>
+                                    <br>
+
+                                </div>
+
+                                <h1><span>FREQUENTLY ASKED QUESTIONS/RINK PACKAGES</span></h1>
+
+                                <div style="font-size: 12px; padding-bottom: 12px; padding-top: 10px; padding-left: 15px;
+                            margin-top: 15px; letter-spacing: 0px; line-height: 16px; padding-right: 15px">
+                                    <h2 style="color: rgb(120,90,20); text-align: center; padding-top: 5px">
+                                        2015 - 2016 VIP SKATE RESERVATIONS</h2>
+
+                                    <div style="text-align: center">
+                                        &nbsp;</div>
+
+                                    <strong>Q:
+                                        How long are VIP skate sessions?<br>
+                                        A:</strong>
+                                    Each VIP session lasts 90 minutes.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Is the VIP Igloo available for special events?<br>
+                                        A:</strong>
+                                    The VIP Igloo is available for special events. Please contact
+                                    <a href="mailto:RockCenterEvents@patinagroup.com" target="_blank">RockCenterEvents@patinagroup.com</a>.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What is included in VIP Skate?<br>
+                                        A:</strong>
+                                    Bypass the general admission line with a guaranteed reservation at a time and day of
+                                    your choosing. Skate rentals are included with no additional fee. We also provide
+                                    our VIP guests with skate concierges to assist you with skates, in &amp; out access
+                                    to The Rink for the session, hot chocolate, espresso, bottled water and an
+                                    assortment of freshly baked cookies.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Is there a different rate for children?<br>
+                                        A:</strong>
+                                    The cost for this skating option is the same for all of our guests.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Can I bring a guest into the Igloo without a pass?<br>
+                                        A:</strong>
+                                    No. We cannot accommodate guests without passes to our VIP area under any condition.
+                                    (This includes parents of children skating, regardless of age)<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        How do I get to the VIP Igloo?<br>
+                                        A:</strong>
+                                    All guests are to enter through 30 Rockefeller Plaza and head down the stairs to the
+                                    concourse level. The Igloo will be located in the S/W bullpen in front of Sea Grill.
+                                    A link to the map is also located in your confirmation email.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What if it rains or snows?<br>
+                                        A:</strong>
+                                    The Rink is open during all inclement weather conditions.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Are reservations refundable?<br>
+                                        A:</strong>
+                                    Reservations are non-refundable and are only good for the date and time specified.
+                                    Please do not make your final purchase on our webcart until you are ready as we
+                                    cannot change, modify or refund this once it is process on line. During all
+                                    inclement weather conditions we are open in VIP skate and will not be able to move
+                                    times and dates as all sessions are sold out for our holiday season.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Where is the Igloo located and how do I get to it?<br>
+                                        A:</strong>
+                                    Here is the map with directions:
+                                    <a href="https://therink.smartertakeout.net/files/Ice-Rink-IGLOO-Entrance-Map-December.pdf" target="_blank">MAP
+                                        LINK</a><br>
+                                    <br>
+
+                                </div>
+
+                                <h1><span>FREQUENTLY ASKED QUESTIONS/RINK PACKAGES</span></h1>
+
+                                <div style="font-size: 12px; padding-bottom: 12px; padding-top: 10px; padding-left: 15px;
+                            margin-top: 15px; letter-spacing: 0px; line-height: 16px; padding-right: 15px">
+                                    <h2 style="color: rgb(120,90,20); text-align: center; padding-top: 5px">
+                                        BREAKFAST WITH SANTA</h2>
+
+                                    <div style="text-align: center">
+                                        &nbsp;</div>
+
+                                    <strong>Q:
+                                        How long are Breakfast with Santa sessions? Are we able to arrive late?<br>
+                                        A:</strong>
+                                    Please be sure to arrive on time. We are unable to extend the reservation time for
+                                    latecomers. Please note: Rock Center Café reservations have a duration of 1 hour and
+                                    15 minutes and The Sea Grill reservations have a duration of 1 hour and 30
+                                    minutes.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Are reservations refundable?<br>
+                                        A:</strong>
+                                    Reservations are non-refundable and are only good for the date and time
+                                    specified.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        If we have a large party, are we guaranteed to sit together?<br>
+                                        A:</strong>
+                                    Each of our special Breakfast with Santa sessions has a specific number of tables
+                                    that are available for parties of 5 or more. This allows all of our guests to be
+                                    accommodated. When you are booking on our webcart, your reservation maybe declined
+                                    if the size of your request is too large of a group for that date. Please enter your
+                                    second choice if that occurs.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Can we have a window seat for our reservation?<br>
+                                        A:</strong>
+                                    We do not accept requests for specific tables in any of our locations at Rockefeller
+                                    Center with the exception of our Engagement on Ice-Platinum Package. Our floor plans
+                                    and ability to accommodate everyone does not allow us to take any requests for
+                                    specific seating of any kind. For guests with wheel chairs and service pets, we will
+                                    ensure you are accommodated as you arrive.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Is skating included in our Breakfast with Santa reservation?<br>
+                                        A:</strong>
+                                    Your skating admission tickets will be held at the door on the day of your
+                                    reservation and will be given to you upon presentation of your confirmation
+                                    email.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do we need to use the skating tickets the day of our Breakfast with Santa
+                                        reservation?<br>
+                                        A:</strong>
+                                    We recommend that you do. The skating tickets you receive when you arrive for
+                                    Breakfast with Santa must be redeemed on that day OR you may return to skate after
+                                    January 7th.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Do we need to rent skates or can we bring personal skates?<br>
+                                        A:</strong>
+                                    You may do either. Skate rentals are available for $12.00 per person. Personal
+                                    skates are permitted.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Is there a Santa at both locations?<br>
+                                        A:</strong>
+                                    Yes, there will be a Santa at both Rock Center Café and The Sea Grill.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        What are the ages for children?<br>
+                                        A:</strong>
+                                    Children are ages 9 and under.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        If we do not want to skate, can we book for a lower price?<br>
+                                        A:</strong>
+                                    This package is only sold as a combination and no discounts can be applied if you
+                                    decide to skip any of the offerings included.<br>
+                                    <br>
+
+                                    <strong>Q:
+                                        Is parking available?<br>
+                                        A:</strong>
+                                    Parking is located at 45 West 48th street. Rockefeller Center Parking Garage between
+                                    5th and 6th Avenues.<br>Guests for Breakfast with Santa only who enter by 9:00 AM
+                                    will be allowed 6 hours maximum for $30.00.<br>Please pick up your voucher at the
+                                    front desk on the day of event.<br>
+                                    <br>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrapper">
+        <iframe src="order/LocalSettings/rink/controls/footer.html" frameborder="0" width="100%" name="FrameFooter" scrolling="no" class="footerIframe" style="height: 88px;"></iframe>
+    </div>
+
+
+    </div>
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script src="order/Scripts/libs/bootstrap-datepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap-timepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap.js"></script>
+
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.2.min.js">\x3C/script>')</script>
+
+<script src="order/Scripts/plugins.js"></script>
+<script src="order/Scripts/main.js"></script>
+
+<script type="text/javascript">
+    var onSuccess = function (result) {
+        if (result.url) {
+            window.location.href = result.url;
+        }
+    };
+
+    (function initializeForgetPassword() {
+        $(document).on('click', '.forgot-password', function () {
+            $("#forgotPass").toggle();
+        });
+    })();
+
+</script>
+
+
+</body>
+</html>
+

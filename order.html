@@ -1,0 +1,1185 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en" xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Smarter Takeout</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=100" >
+    <!--<link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet' type='text/css'>-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+
+    <link href="order/Content/css/normalize.css" rel="stylesheet" />
+    <link href="order/Content/css/datepicker.css" rel="stylesheet" />
+    <link href="order/Content/css/bootstrap-timepicker.css" rel="stylesheet" />
+
+    <link href="order/Content/Site.css" rel="stylesheet" />
+
+    <script src="order/Scripts/libs/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+
+    <script src="order/Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+    <script src="order/Scripts/modernizr-2.6.2.js"></script>
+    <script src="order/Scripts/libs/modernizr-2.6.2-custom.js"></script>
+
+
+    <script src="order/bundles/modernizr?v=vDRj3L7j8c0oVwcr5naO37v2EF_wmuRlhPc_Cbe3L-41"></script>
+
+    <link href="order/LocalSettings/rink/styles/rink_style.css" rel="stylesheet" />
+
+    <script src="https://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        _uacct = "UA-2254943-1";
+        urchinTracker();
+    </script>
+
+</head>
+<body>
+
+
+<div class="ci-page-bg-visual ci-bg-rosemary">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-basilicum">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-tomatoes">&nbsp;</div>
+
+<section style="height: 100%; min-height: 100%">
+    <div class="fixbg">
+
+
+        <script type="text/javascript">
+            (function (d) {
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement('script');
+                js.id = id;
+                js.async = true;
+                js.src = document.location.protocol + "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+            window.fbAsyncInit = function () {
+                var isLoginClick = false;
+                FB.init({ appId: '501365963275166', status: true, cookie: true, xfbml: true });
+                FB.Event.subscribe('auth.statusChange', function (response) {
+                    if (response.authResponse) {
+                        // user has auth'd your app and is logged into Facebook
+                        FB.api('/me', function (me) {
+                            if (me.name) {
+                                document.getElementById('nameUser').value = me.name;
+                                document.getElementById('emailUser').value = me.email;
+                                document.getElementById('auth-email').innerHTML = me.email;
+                                document.getElementById('auth-displayname').innerHTML = me.name;
+                                document.getElementById('nameUsermobile').value = me.name;
+                                document.getElementById('emailUsermobile').value = me.email;
+                                document.getElementById('auth-emailmobile').innerHTML = me.email;
+                                document.getElementById('auth-displaynamemobile').innerHTML = me.name;
+                                if (isLoginClick) {
+                                    $("#loginToSiteBtn").click();
+                                    $("#loginToSiteBtnmobile").click();
+                                }
+                            } else {
+                                isLoginClick = false;
+                            }
+
+                        });
+                        document.getElementById('auth-loggedout').style.display = 'none';
+                        document.getElementById('auth-loggedin').style.display = 'block';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'none';
+                        document.getElementById('auth-loggedinmobile').style.display = 'block';
+                    } else {
+                        // user has not auth'd your app, or is not logged into Facebook
+                        document.getElementById('auth-loggedout').style.display = 'block';
+                        document.getElementById('auth-loggedin').style.display = 'none';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'block';
+                        document.getElementById('auth-loggedinmobile').style.display = 'none';
+                        isLoginClick = false;
+                    }
+                });
+                $("#auth-logoutlink").click(function () { FB.logout(function () { window.location.reload(); }); });
+                $("#lgtoFB").click(function () { FB.login(function () { isLoginClick = true; }, { scope: 'email' }); });
+                $("#lgtosite").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtn").click();
+                });
+                $("#auth-logoutlinkmobile").click(function () { FB.logout(function () { window.location.reload(); }); });
+                $("#lgtoFBmobile").click(function () { FB.login(function () { isLoginClick = true; }, { scope: 'email' }); });
+                $("#lgtositemobile").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtnmobile").click();
+                });
+            };
+        </script>
+        <div class="pageWrap">
+
+            <header>
+
+                <div class="mobile">
+
+                    <div class="mobile-main-header">
+
+                        <div class="menu-left">
+                            <div class="menu-left-icon"></div>
+
+                        </div>
+                        <div id="branding" role="banner">
+                            <div class="ci-content-positioner">
+                                <a rel="home" href="#">
+                                    <img width="135" height="36" class="ci-sitelogo ci-sitelogo-rpg " alt="PRG logo" src="order/LocalSettings/rink/images/prg-logo.png"></a>
+
+                                <a rel="home" href="#">
+                                    <img width="95" height="89" class="ci-sitelogo ci-sitelogo-main" alt="Logo" src="order/LocalSettings/rink/images/logo.png"></a>
+
+                                <div class="ci-clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-in">
+                            <a href="#">Sign In</a>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="mobile-steps-bg">
+                        <span class="step"> Step 1 - <span class="step-mob">Registration</span></span>
+                    </div>
+
+                </div>
+
+
+
+                <section class="clearfix">
+
+
+                    <a href="#" class="logo"></a>
+                    <div height="103px" style="width:">
+
+                        <div style="display: inline; height:103px">
+                            <iframe src="order/LocalSettings/rink/controls/header.html" frameborder="0"
+                                    style="overflow:hidden;overflow-x:hidden;overflow-y:hidden; height: 103px ;width:100%;position:absolute;z-index:0; top:0px;left:0px;right:0px;bottom:0px" scrolling="no"></iframe>
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </header>
+
+            <div id="wrap" >
+                <div id="panel">
+                    <div class="pageBlock">
+                        <div class="checkoutSteps">
+                            <ul class="clearfix">
+                                <li>
+                                    <div class="current">
+                                        <p>
+                                            <span class="step-link_number_active_step dot one"></span>
+                                            <span class="step-link_active_text">Registration</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <p>
+                                            <span class="step-link_number_active_step dot two"></span>
+                                                                  <span class="breadcrumb_next_step_text">Date and Time</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <p>
+                                            <span class="step-link_number_next_step dot three"></span>
+                                            <span class="breadcrumb_next_step_text">Order</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class ="">
+                                        <p>
+                                            <span class="step-link_number_next_step dot four"></span>
+                                            <span class="breadcrumb_next_step_text">Review and Place Order</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>                <div class="">
+                        <div class="clearfix step-orders-wrap">
+                            <div class="stepSignIn">
+                                <h1>Sign In</h1>
+                                <!--<a href="#SignAsGuestDiv" class="mobileSignAsGuest">SIGN IN AS A GUEST</a>-->
+                                <div style="clear:both;"></div>
+                                <div id="SignInResult"><form action="/order/Login/SignIn" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="onSuccess" data-ajax-update="#SignInResult" id="form0" method="post">
+                                    <div class="row">
+                                        <label>
+                                            Email</label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$login$username" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_login_username" tabindex="1" class="txt text-placeholder" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_login').click();}" onblur="$('form').submit(function() {  return true;    });" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label>
+                                            Password</label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$login$password" type="password" id="ctl00_ContentPlaceHolder1_CustomerForm_login_password" tabindex="2" class="txt text-placeholder" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_login').click();}" onblur="$('form').submit(function() {  return true;    });" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+
+                                    <!--<span class="label-before">Email * </span>-->
+                                    <!--<input id="email" name="HostLoginInfo.Email" placeholder="Email *" type="text" value="" /><span class="field-validation-valid" data-valmsg-for="HostLoginInfo.Email" data-valmsg-replace="true"></span>-->
+                                    <!--<span class="label-before">Password * </span>-->
+                                    <!--<input id="password" name="HostLoginInfo.Password" placeholder="Password *" type="password" /><span class="field-validation-valid" data-valmsg-for="HostLoginInfo.Password" data-valmsg-replace="true"></span>    <input type="submit" onclick="ClearAllChildFieldsAndErrors('SignInAsGuestResult');" class="btnSubmit" value="SIGN IN" />-->
+                                </form></div>
+                                <div class="row2">
+    <span class="envelopeBtn"><a id="ctl00_ContentPlaceHolder1_CustomerForm_login_ButtonLogin" class="link" tabindex="3" value="Login" validationgroup="-1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$CustomerForm$login$ButtonLogin','')">Sign in</a>
+    </span><a href="https://therinkatrockcenter.com:443/ForgotPassword.aspx" class="forgotPassw">
+                                    Forgot your password?</a> <a href="#" id="ctl00_ContentPlaceHolder1_CustomerForm_login" style="visibility: hidden" onclick="__doPostBack('ctl00$ContentPlaceHolder1$CustomerForm$login','login') ">
+                                    &nbsp;</a>
+                                </div>
+
+                                <div id="forgotPass" style="display: none">
+                                    <form action="/order/ForgotPassword/NewPassword" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="onSuccess" data-ajax-update="#forgotPass" id="form1" method="post">    <br />
+                                        <div style="margin-bottom: 10px; font-size: 0.8em; line-height: 18px" >
+                                            <p>Forgot your password? No problem! Just simply enter your login name and click "Retrieve  password." New login details will be emailed to you.</p>
+                                        </div>
+                                        <span class="label-before">Email * </span>
+                                        <input data-val="true" data-val-remote="&#39;Email&#39; is invalid." data-val-remote-additionalfields="*.Email" data-val-remote-type="POST" data-val-remote-url="/order/ForgotPassword/IsEmailExist" id="Email" name="Email" placeholder="Email *" type="text" value="" /><span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>    <input type="submit" class="btnSubmit" value="Send Password" />
+                                        <br />
+                                    </form>
+                                </div>
+                                <!--<a data-toggle="modal" href="#registrationModal" class="edit">Click here to create an account!</a>-->
+                                <!--<a href="#registrationModalMobile" class="mobileRegistration">Click here to create an account!</a>-->
+                                <div id="ctl00_ContentPlaceHolder1_CustomerForm_registerpanel">
+
+                                    <span class="title padd">registration</span>
+                                    <div class="clear">
+                                    </div>
+                                    <p>
+                                        Creating an account with us will save you time with future reservations.</p>
+                                    <a href="#" class="registerNow" onclick=" $('.bg_popup').show();" id="register">Click here to create an account!</a>
+
+                                    <div class="bg_popup" style="display:none;">
+                                        <div class="popupWrap">
+                                            <a href="#" class="closeLink" onclick=" $('.bg_popup').hide();"></a>
+                                            <div class="popupContent">
+            <span class="title">Registration<span class="note"><span class="color">*</span>Means
+                required field</span></span>
+                                                <div class="row">
+                                                    <label>
+                                                        First Name<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$firstName" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_firstName" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_FirstValidator" class="incorrect" style="color:Red;display:none;">Please enter correct first name</span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Last Name<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$lastName" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_lastName" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_LastValidator" class="incorrect" style="color:Red;display:none;">Please enter correct last name</span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row birthday">
+                                                    <label>
+                                                        Birthday</label>
+                                                    <div class="envelopeSelect">
+                                                        <div id="cusSelect1SelectArea" class="select-area" style="width: 166px; height: 23px;"><div class="select-area-left"></div><div class="select-area-right"></div><div id="cusSelect1Text" class="select-area-center" style="width: 159px;">January</div><ul id="cusSelect1Options" class="select-options-invisible" style="width: 164px;"><li id="cusSelect1Option0" class="select-option-selected">January</li><li id="cusSelect1Option1">February</li><li id="cusSelect1Option2">March</li><li id="cusSelect1Option3">April</li><li id="cusSelect1Option4">May</li><li id="cusSelect1Option5">June</li><li id="cusSelect1Option6">July</li><li id="cusSelect1Option7">August</li><li id="cusSelect1Option8">September</li><li id="cusSelect1Option9">October</li><li id="cusSelect1Option10">November</li><li id="cusSelect1Option11">December</li></ul></div><select name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$vipMonth" id="cusSelect1" class="customSelect customSelect-w166" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                        <option selected="selected" value="January">January</option>
+                                                        <option value="February">February</option>
+                                                        <option value="March">March</option>
+                                                        <option value="April">April</option>
+                                                        <option value="May">May</option>
+                                                        <option value="June">June</option>
+                                                        <option value="July">July</option>
+                                                        <option value="August">August</option>
+                                                        <option value="September">September</option>
+                                                        <option value="October">October</option>
+                                                        <option value="November">November</option>
+                                                        <option value="December">December</option>
+
+                                                    </select>
+                                                    </div>
+                                                    <div class="envelopeSelect days">
+                                                        <div id="cusSelect2SelectArea" class="select-area" style="width: 84px; height: 23px;"><div class="select-area-left"></div><div class="select-area-right"></div><div id="cusSelect2Text" class="select-area-center" style="width: 77px;">01</div><ul id="cusSelect2Options" class="select-options-invisible" style="width: 82px; height: 330px;"><li id="cusSelect2Option0" class="select-option-selected">01</li><li id="cusSelect2Option1">02</li><li id="cusSelect2Option2">03</li><li id="cusSelect2Option3">04</li><li id="cusSelect2Option4">05</li><li id="cusSelect2Option5">06</li><li id="cusSelect2Option6">07</li><li id="cusSelect2Option7">08</li><li id="cusSelect2Option8">09</li><li id="cusSelect2Option9">10</li><li id="cusSelect2Option10">11</li><li id="cusSelect2Option11">12</li><li id="cusSelect2Option12">13</li><li id="cusSelect2Option13">14</li><li id="cusSelect2Option14">15</li><li id="cusSelect2Option15">16</li><li id="cusSelect2Option16">17</li><li id="cusSelect2Option17">18</li><li id="cusSelect2Option18">19</li><li id="cusSelect2Option19">20</li><li id="cusSelect2Option20">21</li><li id="cusSelect2Option21">22</li><li id="cusSelect2Option22">23</li><li id="cusSelect2Option23">24</li><li id="cusSelect2Option24">25</li><li id="cusSelect2Option25">26</li><li id="cusSelect2Option26">27</li><li id="cusSelect2Option27">28</li><li id="cusSelect2Option28">29</li><li id="cusSelect2Option29">30</li><li id="cusSelect2Option30">31</li></ul></div><select name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$vipDay" id="cusSelect2" class="customSelect customSelect-w84" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                        <option selected="selected" value="1">01</option>
+                                                        <option value="2">02</option>
+                                                        <option value="3">03</option>
+                                                        <option value="4">04</option>
+                                                        <option value="5">05</option>
+                                                        <option value="6">06</option>
+                                                        <option value="7">07</option>
+                                                        <option value="8">08</option>
+                                                        <option value="9">09</option>
+                                                        <option value="10">10</option>
+                                                        <option value="11">11</option>
+                                                        <option value="12">12</option>
+                                                        <option value="13">13</option>
+                                                        <option value="14">14</option>
+                                                        <option value="15">15</option>
+                                                        <option value="16">16</option>
+                                                        <option value="17">17</option>
+                                                        <option value="18">18</option>
+                                                        <option value="19">19</option>
+                                                        <option value="20">20</option>
+                                                        <option value="21">21</option>
+                                                        <option value="22">22</option>
+                                                        <option value="23">23</option>
+                                                        <option value="24">24</option>
+                                                        <option value="25">25</option>
+                                                        <option value="26">26</option>
+                                                        <option value="27">27</option>
+                                                        <option value="28">28</option>
+                                                        <option value="29">29</option>
+                                                        <option value="30">30</option>
+                                                        <option value="31">31</option>
+
+                                                    </select>
+                                                    </div>
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_birthDateValidator" class="incorrect" style="color:Red;display:none;">Please, enter valid Birth Date.</span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Company</label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$company" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_company" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Address 1</label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$address1" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_address1" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Address 2</label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$address2" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_address2" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row zip">
+                                                    <label>
+                                                        City/ State/ Zip<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$town" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_town" class="txt w-144 text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="float:left;margin-left:5px;margin-right:10px;">
+
+                                                    <div class="envelopeSelect state">
+                                                        <div id="cusSelect3SelectArea" class="select-area" style="width: 82px; height: 23px;"><div class="select-area-left"></div><div class="select-area-right"></div><div id="cusSelect3Text" class="select-area-center" style="width: 75px;">AK</div><ul id="cusSelect3Options" class="select-options-invisible" style="width: 80px; height: 330px;"><li id="cusSelect3Option0" class="select-option-selected">AK</li><li id="cusSelect3Option1">AL</li><li id="cusSelect3Option2">AR</li><li id="cusSelect3Option3">AZ</li><li id="cusSelect3Option4">CA</li><li id="cusSelect3Option5">CO</li><li id="cusSelect3Option6">CT</li><li id="cusSelect3Option7">DC</li><li id="cusSelect3Option8">DE</li><li id="cusSelect3Option9">FL</li><li id="cusSelect3Option10">GA</li><li id="cusSelect3Option11">HI</li><li id="cusSelect3Option12">IA</li><li id="cusSelect3Option13">ID</li><li id="cusSelect3Option14">IL</li><li id="cusSelect3Option15">IN</li><li id="cusSelect3Option16">KS</li><li id="cusSelect3Option17">KY</li><li id="cusSelect3Option18">LA</li><li id="cusSelect3Option19">MA</li><li id="cusSelect3Option20">MD</li><li id="cusSelect3Option21">ME</li><li id="cusSelect3Option22">MI</li><li id="cusSelect3Option23">MN</li><li id="cusSelect3Option24">MO</li><li id="cusSelect3Option25">MS</li><li id="cusSelect3Option26">MT</li><li id="cusSelect3Option27">NC</li><li id="cusSelect3Option28">ND</li><li id="cusSelect3Option29">NE</li><li id="cusSelect3Option30">NH</li><li id="cusSelect3Option31">NJ</li><li id="cusSelect3Option32">NM</li><li id="cusSelect3Option33">NV</li><li id="cusSelect3Option34">NY</li><li id="cusSelect3Option35">OH</li><li id="cusSelect3Option36">OK</li><li id="cusSelect3Option37">OR</li><li id="cusSelect3Option38">OT</li><li id="cusSelect3Option39">PA</li><li id="cusSelect3Option40">PR</li><li id="cusSelect3Option41">RI</li><li id="cusSelect3Option42">SC</li><li id="cusSelect3Option43">SD</li><li id="cusSelect3Option44">TN</li><li id="cusSelect3Option45">TX</li><li id="cusSelect3Option46">UT</li><li id="cusSelect3Option47">VA</li><li id="cusSelect3Option48">VI</li><li id="cusSelect3Option49">VT</li><li id="cusSelect3Option50">WA</li><li id="cusSelect3Option51">WI</li><li id="cusSelect3Option52">WV</li><li id="cusSelect3Option53">WY</li></ul></div><select name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$state" id="cusSelect3" class="customSelect customSelect-w82" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                        <option selected="selected" value="2">AK</option>
+                                                        <option value="1">AL</option>
+                                                        <option value="4">AR</option>
+                                                        <option value="3">AZ</option>
+                                                        <option value="5">CA</option>
+                                                        <option value="6">CO</option>
+                                                        <option value="7">CT</option>
+                                                        <option value="9">DC</option>
+                                                        <option value="8">DE</option>
+                                                        <option value="10">FL</option>
+                                                        <option value="11">GA</option>
+                                                        <option value="12">HI</option>
+                                                        <option value="16">IA</option>
+                                                        <option value="13">ID</option>
+                                                        <option value="14">IL</option>
+                                                        <option value="15">IN</option>
+                                                        <option value="17">KS</option>
+                                                        <option value="18">KY</option>
+                                                        <option value="19">LA</option>
+                                                        <option value="22">MA</option>
+                                                        <option value="21">MD</option>
+                                                        <option value="20">ME</option>
+                                                        <option value="23">MI</option>
+                                                        <option value="24">MN</option>
+                                                        <option value="26">MO</option>
+                                                        <option value="25">MS</option>
+                                                        <option value="27">MT</option>
+                                                        <option value="34">NC</option>
+                                                        <option value="35">ND</option>
+                                                        <option value="28">NE</option>
+                                                        <option value="30">NH</option>
+                                                        <option value="31">NJ</option>
+                                                        <option value="32">NM</option>
+                                                        <option value="29">NV</option>
+                                                        <option value="33">NY</option>
+                                                        <option value="36">OH</option>
+                                                        <option value="37">OK</option>
+                                                        <option value="38">OR</option>
+                                                        <option value="54">OT</option>
+                                                        <option value="39">PA</option>
+                                                        <option value="40">PR</option>
+                                                        <option value="41">RI</option>
+                                                        <option value="42">SC</option>
+                                                        <option value="43">SD</option>
+                                                        <option value="44">TN</option>
+                                                        <option value="45">TX</option>
+                                                        <option value="46">UT</option>
+                                                        <option value="49">VA</option>
+                                                        <option value="48">VI</option>
+                                                        <option value="47">VT</option>
+                                                        <option value="50">WA</option>
+                                                        <option value="52">WI</option>
+                                                        <option value="51">WV</option>
+                                                        <option value="53">WY</option>
+
+                                                    </select>
+                                                    </div>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$postcode" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_postcode" class="txt w-71 text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="float:right;">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_zipValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Phone<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$phone" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_phone" class="txt text-placeholder" errorcssclass="txt wrong" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span style="font-size: 12px; float: left; display: none;">ext.</span>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$phoneExtention" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_phoneExtention" class="txt text-placeholder" maxlength="4" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_PhoneValidator2" class="incorrect" style="color:Red;display:none;">Please enter correct Phone.</span>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Email<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$email" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_email" class="txt text-placeholder" oncopy="return false;" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_emailValidator2" class="incorrect" style="color:Red;display:none;">A profile with this email already exists in the system.</span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>Verify Email<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$emailVerify" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_emailVerify" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_emailVerifyValidator2" class="incorrect" style="color:Red;display:none;">Enter correct email</span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Password<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$password" type="password" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_password" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_passwordValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Confirm Password<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$confirm" type="password" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_confirm" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Security Question<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$question" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_question" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_CustomQuestionValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <label>
+                                                        Security Answer<span class="color">*</span></label>
+                                                    <input name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$answer" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_answer" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    <span id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_CustomAnswerValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                    <div class="clear">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div style="float: left; margin-top: 9px; margin-right: 10px;">
+                                                        <input id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_IsSubscriber" type="checkbox" name="ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$IsSubscriber" onclick="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                    </div>
+                                                    <label id="forsubscribe">
+                                                        <b>Subscribe To Emails</b></label>
+                                                </div>
+                                                <div class="row">
+                                                    <span class="envelopeBtn light fleft"><a id="ctl00_ContentPlaceHolder1_CustomerForm_RegistrationControl_signUp" class="link" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$CustomerForm$RegistrationControl$signUp", "", true, "", "", false, true))'>Sign up</a></span> <span class="envelopeBtn grey fright">
+                        <a class="link" href="#" onclick=" $('.bg_popup').hide();">
+                            Cancel</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <script type="text/javascript">
+
+                                        $(document).ready(function() {
+
+                                            $("#closeregister").click(function() {
+                                                $('.bg_popup').hide();
+                                                return false;
+                                            });
+
+
+
+                                        });
+
+                                    </script>
+
+
+
+                                    <script type="text/javascript">
+                                        initDropdown();
+                                    </script>
+
+
+                                </div>
+                                <!--<div id="FbLoginResult"><form action="/order/Login/FbLogin" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="onSuccess" data-ajax-update="#FbLoginResult" id="form2" method="post">    <div id="auth-status">-->
+                                    <!--<div id="auth-loggedout">-->
+                                        <!--<a href="#" class="facebookLink" id="lgtoFB">&nbsp;</a>-->
+                                    <!--</div>-->
+                                    <!--<div id="auth-loggedin" style="display: none">-->
+                                        <!--<input id="nameUser" name="Name" type="hidden" value="" />-->
+                                        <!--<input id="emailUser" name="Email" type="hidden" value="" />-->
+
+                                        <!--<span id="auth-displayname" style="display: none;"></span>-->
+                                        <!--<span id="auth-email" style="display: none;"></span>-->
+                                        <!--<a href="#" id="auth-logoutlink" style="display: none;">logout</a>-->
+
+                                        <!--<a href="#" class="facebookLink" id="lgtosite">&nbsp;</a>-->
+
+                                    <!--</div>-->
+                                <!--</div>-->
+                                    <!--<input type="submit" id="loginToSiteBtn" value="Enter" class="png" style="display: none;"/>-->
+                                <!--</form></div>--><br>
+                                <div id="ctl00_ContentPlaceHolder1_CustomerForm_facebookpanel">
+
+
+
+                                    <div id="fb-root" class=" fb_reset">
+                                        <div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://s-static.ak.facebook.com/connect/xd_arbiter/1ldYU13brY_.js?version=41#channel=f3fc94235c&amp;origin=https%3A%2F%2Ftherinkatrockcenter.com" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+
+
+                                    <script type="text/javascript">
+                                        (function(d) {
+                                            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                                            if (d.getElementById(id)) { return; }
+                                            js = d.createElement('script'); js.id = id; js.async = true;
+                                            js.src = document.location.protocol + "//connect.facebook.net/en_US/all.js";
+                                            ref.parentNode.insertBefore(js, ref);
+                                        } (document));
+
+                                        window.fbAsyncInit = function() {
+                                            var isLoginClick = false;
+                                            FB.init({ appId: '501365963275166', status: true, cookie: true, xfbml: true });
+
+
+                                            FB.Event.subscribe('auth.statusChange', function(response) {
+                                                if (response.authResponse) {
+                                                    // user has auth'd your app and is logged into Facebook
+                                                    FB.api('/me', function(me) {
+                                                        if (me.name) {
+                                                            document.getElementById('ctl00_ContentPlaceHolder1_CustomerForm_FacebookLogin_NameUser').value = me.name;
+                                                            document.getElementById('ctl00_ContentPlaceHolder1_CustomerForm_FacebookLogin_EmailUser').value = me.email;
+                                                            document.getElementById('auth-email').innerHTML = me.email;
+                                                            document.getElementById('auth-displayname').innerHTML = me.name;
+                                                            if (isLoginClick) {
+                                                                $("#ctl00_ContentPlaceHolder1_CustomerForm_FacebookLogin").click();
+                                                            }
+
+                                                        }
+                                                        else {
+                                                            isLoginClick = false;
+                                                        }
+
+                                                    });
+                                                    document.getElementById('auth-loggedout').style.display = 'none';
+                                                    document.getElementById('auth-loggedin').style.display = 'block';
+                                                } else {
+                                                    // user has not auth'd your app, or is not logged into Facebook
+                                                    document.getElementById('auth-loggedout').style.display = 'block';
+                                                    document.getElementById('auth-loggedin').style.display = 'none';
+                                                    isLoginClick = false;
+                                                }
+                                            });
+                                            $("#auth-logoutlink").click(function() { FB.logout(function() { window.location.reload(); }); });
+
+                                            $("#lgtoFB").click(function() { FB.login(function() { isLoginClick = true; }, { scope: 'email' }); });
+                                            $("#lgtosite").click(function() { isLoginClick = true; $("#ctl00_ContentPlaceHolder1_CustomerForm_FacebookLogin").click(); });
+                                        };
+                                    </script>
+
+
+                                    <div id="auth-status">
+                                        <div id="auth-loggedout" style="display: block;">
+                                            <div class="row2" id="logtosite">
+                                                <span class="envelopeBtn2" style="width: 223px;"><a class="link" style="width: 223px;" id="lgtoFB" href="#">&nbsp;</a></span>
+                                            </div>
+                                        </div>
+                                        <div id="auth-loggedin" style="display: none;">
+                                            <input type="hidden" name="ctl00$ContentPlaceHolder1$CustomerForm$FacebookLogin$NameUser" id="ctl00_ContentPlaceHolder1_CustomerForm_FacebookLogin_NameUser">
+                                            <input type="hidden" name="ctl00$ContentPlaceHolder1$CustomerForm$FacebookLogin$EmailUser" id="ctl00_ContentPlaceHolder1_CustomerForm_FacebookLogin_EmailUser">
+                                            <span id="auth-displayname" style="display: none;"></span><span id="auth-email" style="display: none;">
+        </span><a href="#" id="auth-logoutlink" style="display: none;">logout</a>
+                                            <div class="row2" id="Div1">
+                                                <span class="envelopeBtn2" style="width: 223px;"><a class="link" style="width: 223px;" id="lgtosite" href="#">&nbsp;</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="button" id="ctl00_ContentPlaceHolder1_CustomerForm_FacebookLogin" value="Enter" class="png" style="display: none;" onclick="__doPostBack('ctl00$ContentPlaceHolder1$CustomerForm$FacebookLogin','facebook') ">
+
+
+                                </div>
+
+                            </div>
+                            <div class="stepSignAsGuest" id="SignAsGuestDiv">
+                                <h1>SIGN IN AS A GUEST</h1>
+                                <div id="SignInAsGuestResult"><form action="/order/Login/SignInAsGuest" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="onSuccess" data-ajax-update="#SignInAsGuestResult" id="form3" method="post">
+                                    <div class="row">
+                                        <label>
+                                            First Name<span class="color">*</span></label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$customerFirstName" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_customerFirstName" class="txt text-placeholder" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_GuestForm').click();}" onblur="$('form').submit(function() {  return true;    });" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                        <span id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_FirstValidator" class="incorrect" style="color:Red;display:none;">Please enter correct first name</span>
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label>
+                                            Last Name<span class="color">*</span></label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$customerSurname" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_customerSurname" class="txt text-placeholder" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_GuestForm').click();}" onblur="$('form').submit(function() {  return true;    });" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                        <span id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_LastValidator" class="incorrect" style="color:Red;display:none;">Please enter correct last name</span>
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label>
+                                            Email<span class="color">*</span></label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$customerEmail" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_customerEmail" class="txt text-placeholder" oncopy="return false;" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_GuestForm').click();}" onblur="$('form').submit(function() {  return true;    });" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <label>Verify Email<span class="color">*</span></label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$customerVerifyEmail" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_customerVerifyEmail" class="txt text-placeholder" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_GuestForm').click();}" onblur="$('form').submit(function() {  return true;    });" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label>
+                                            Company</label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$customerCompany" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_customerCompany" class="txt text-placeholder" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_GuestForm').click();}" onblur="$('form').submit(function() {  return true;    });" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label>
+                                            Phone<span class="color">*</span></label>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$phone" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_phone" class="txt text-placeholder" errorcssclass="txt wrong" onblur="$('form').submit(function() {  return true;    });" onkeypress="if (event.keyCode == 13) {$('#ctl00_ContentPlaceHolder1_CustomerForm_GuestForm').click();}" onfocus="$('form').submit(function() {  return false;    });" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                        <span style="font-size: 12px; float: left; display: none;">ext.</span>
+                                        <input name="ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$phoneExtention" type="text" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_phoneExtention" class="txt text-placeholder" maxlength="4" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+
+                                        <div class="clear">
+                                        </div>
+                                    </div>
+                                    <div class="row2">
+                                        <span class="envelopeBtn"><a id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm_guestButton2" class="link" validationgroup="-1" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$CustomerForm$GuestForm$guestButton2','')">Sign in</a></span> <span class="note">
+            <span class="color">*</span>Means required field</span> <a href="#" id="ctl00_ContentPlaceHolder1_CustomerForm_GuestForm" style="visibility: hidden" onclick="__doPostBack('ctl00$ContentPlaceHolder1$CustomerForm$GuestForm','guestlogin') ">
+                                        &nbsp;</a>
+                                    </div>
+
+
+                                    <!--<span class="label-before">First Name * </span>-->
+                                    <!--<input id="firstName" name="GuestLoginInfo.FirstName" placeholder="First Name *" type="text" value="" /><span class="field-validation-valid" data-valmsg-for="GuestLoginInfo.FirstName" data-valmsg-replace="true"></span>    <span class="label-before">Last Name *</span>-->
+                                    <!--<input id="lastName" name="GuestLoginInfo.LastName" placeholder="Last Name *" type="text" value="" /><span class="field-validation-valid" data-valmsg-for="GuestLoginInfo.LastName" data-valmsg-replace="true"></span>    <span class="label-before">Email * </span>-->
+                                    <!--<input id="email" name="GuestLoginInfo.Email" placeholder="Email *" type="email" value="" /><span class="field-validation-valid" data-valmsg-for="GuestLoginInfo.Email" data-valmsg-replace="true"></span>    <span class="label-before">Phone * </span>-->
+                                    <!--<input id="phone" name="GuestLoginInfo.Phone" placeholder="Phone *" type="tel" value="" /><span class="field-validation-valid" data-valmsg-for="GuestLoginInfo.Phone" data-valmsg-replace="true"></span>    <input type="submit" class="btnSubmit" onclick="ClearAllChildFieldsAndErrors('SignInResult');" value="SIGN IN" />-->
+                                </form></div>
+                                <div class="isMobile">
+                                    <div id="FbLoginResultMobile"><form action="/order/Login/FbLogin" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="onSuccess" data-ajax-update="#FbLoginResultMobile" id="form4" method="post">    <div id="auth-statusmobile">
+                                        <div id="auth-loggedoutmobile">
+                                            <a href="#" class="facebookLink" id="lgtoFBmobile">&nbsp;</a>
+                                        </div>
+                                        <div id="auth-loggedinmobile" style="display: none">
+                                            <input id="nameUsermobile" name="Name" type="hidden" value="" />
+                                            <input id="emailUsermobile" name="Email" type="hidden" value="" />
+
+                                            <span id="auth-displaynamemobile" style="display: none;"></span>
+                                            <span id="auth-emailmobile" style="display: none;"></span>
+                                            <a href="#" id="auth-logoutlinkmobile" style="display: none;">logout</a>
+                                            <a href="#" class="facebookLink" id="lgtositemobile">&nbsp;</a>
+                                        </div>
+                                    </div>
+                                        <input type="submit" id="loginToSiteBtnmobile" value="Enter" class="png" style="display: none;"/>
+                                    </form></div>
+                                </div>
+                            </div>
+                            <div id="Registration"><form action="order/Login/Registration" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="onSuccess" data-ajax-update="#registrationForm" id="form5" method="post">    <div class="modal fade" id="registrationModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" id ="registration-content">
+                                        <div class="modal-header">
+                                            <a href="#" class="remove close" data-dismiss="modal" aria-hidden="true"><i></i></a>
+                                            <h1 class="modal-title">Registration</h1>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <span class="label-before">First Name  * </span>
+                                            <input id="firstname" name="FirstName" placeholder="First Name *" type="text" value="" />
+                                            <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+
+                                            <span class="label-before">Last Name  * </span>
+                                            <input id="lastname" name="LastName" placeholder="Last Name *" type="text" value="" />
+                                            <span class="field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                                            <div id="registrationForm">
+                                                <p>Birthday (Must be 13 or older)<span class="tip-star"></span></p>
+                                                <div class="clear"></div>
+                                                <div class="inputField">
+                                                    <div class="inputSubfield thirdPartField" style="width: 64%">
+                                                        <select class="dropdownList" data-val="true" data-val-number="The field BirthdayMonth must be a number." data-val-required="The BirthdayMonth field is required." id="birthdaymonth" name="BirthdayMonth" placeholder="Month"><option value="1">January</option>
+                                                            <option value="2">February</option>
+                                                            <option value="3">March</option>
+                                                            <option value="4">April</option>
+                                                            <option value="5">May</option>
+                                                            <option value="6">June</option>
+                                                            <option value="7">July</option>
+                                                            <option value="8">August</option>
+                                                            <option value="9">September</option>
+                                                            <option value="10">October</option>
+                                                            <option value="11">November</option>
+                                                            <option value="12">December</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="inputSubfield thirdPartField">
+                                                        <select class="dropdownList" id="birthdayday" name="BirthdayDay" placeholder="Day"><option value="1">01</option>
+                                                            <option value="2">02</option>
+                                                            <option value="3">03</option>
+                                                            <option value="4">04</option>
+                                                            <option value="5">05</option>
+                                                            <option value="6">06</option>
+                                                            <option value="7">07</option>
+                                                            <option value="8">08</option>
+                                                            <option value="9">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="14">14</option>
+                                                            <option value="15">15</option>
+                                                            <option value="16">16</option>
+                                                            <option value="17">17</option>
+                                                            <option value="18">18</option>
+                                                            <option value="19">19</option>
+                                                            <option value="20">20</option>
+                                                            <option value="21">21</option>
+                                                            <option value="22">22</option>
+                                                            <option value="23">23</option>
+                                                            <option value="24">24</option>
+                                                            <option value="25">25</option>
+                                                            <option value="26">26</option>
+                                                            <option value="27">27</option>
+                                                            <option value="28">28</option>
+                                                            <option value="29">29</option>
+                                                            <option value="30">30</option>
+                                                            <option value="31">31</option>
+                                                        </select>
+                                                    </div>
+
+                                                </div>
+                                                <div style="display: none;">
+
+                                                    <input id="company" name="Company" placeholder="Company" type="text" value="Company" />
+                                                    <input id="appsuit" name="AppSuit" placeholder="App" type="text" value="AppSuit" />
+                                                    <input id="address" name="AddressStreet" placeholder="Street Address" type="text" value="AddressStreet" />
+
+
+                                                </div>
+                                                <span class="label-before">ZIP </span>
+                                                <div class="inputField">
+                                                    <div style="display: none;">
+
+
+                                                        <div class="inputSubfield thirdPartField">
+                                                            <input id="city" name="City" placeholder="City*" type="text" value="City" />
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="inputSubfield thirdPartField zipCodeOnly">
+                                                        <input id="zip" name="Zip" placeholder="ZIP" type="text" value="" />
+                                                    </div>
+                                                    <div style="display: none;">
+
+                                                        <div class="inputSubfield thirdPartField">
+                                                            <select class="dropdownList" data-val="true" data-val-number="The field State must be a number." data-val-required="The State field is required." id="state" name="State"><option value="1">AL</option>
+                                                                <option value="2">AK</option>
+                                                                <option value="3">AZ</option>
+                                                                <option value="4">AR</option>
+                                                                <option value="5">CA</option>
+                                                                <option value="6">CO</option>
+                                                                <option value="7">CT</option>
+                                                                <option value="8">DE</option>
+                                                                <option value="9">DC</option>
+                                                                <option value="10">FL</option>
+                                                                <option value="11">GA</option>
+                                                                <option value="12">HI</option>
+                                                                <option value="13">ID</option>
+                                                                <option value="14">IL</option>
+                                                                <option value="15">IN</option>
+                                                                <option value="16">IA</option>
+                                                                <option value="17">KS</option>
+                                                                <option value="18">KY</option>
+                                                                <option value="19">LA</option>
+                                                                <option value="20">ME</option>
+                                                                <option value="21">MD</option>
+                                                                <option value="22">MA</option>
+                                                                <option value="23">MI</option>
+                                                                <option value="24">MN</option>
+                                                                <option value="25">MS</option>
+                                                                <option value="26">MO</option>
+                                                                <option value="27">MT</option>
+                                                                <option value="28">NE</option>
+                                                                <option value="29">NV</option>
+                                                                <option value="30">NH</option>
+                                                                <option value="31">NJ</option>
+                                                                <option value="32">NM</option>
+                                                                <option value="33">NY</option>
+                                                                <option value="34">NC</option>
+                                                                <option value="35">ND</option>
+                                                                <option value="36">OH</option>
+                                                                <option value="37">OK</option>
+                                                                <option value="38">OR</option>
+                                                                <option value="39">PA</option>
+                                                                <option value="40">PR</option>
+                                                                <option value="41">RI</option>
+                                                                <option value="42">SC</option>
+                                                                <option value="43">SD</option>
+                                                                <option value="44">TN</option>
+                                                                <option value="45">TX</option>
+                                                                <option value="46">UT</option>
+                                                                <option value="47">VT</option>
+                                                                <option value="48">VI</option>
+                                                                <option value="49">VA</option>
+                                                                <option value="50">WA</option>
+                                                                <option value="51">WV</option>
+                                                                <option value="52">WI</option>
+                                                                <option value="53">WY</option>
+                                                                <option value="54">OT</option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <span class="field-validation-valid" data-valmsg-for="Zip" data-valmsg-replace="true"></span>
+
+                                                <span class="label-before">Phone *</span>
+                                                <input id="phone" name="Phone" placeholder="Phone *" type="text" value="" />
+                                                <span class="field-validation-valid" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+
+                                                <span class="label-before">Email *</span>
+                                                <input data-val="true" data-val-remote="&#39;Email&#39; is invalid." data-val-remote-additionalfields="*.Email" data-val-remote-type="POST" data-val-remote-url="/order/Login/IsNotEmailExist" id="email" name="Email" placeholder="Email *" type="text" value="" />
+                                                <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+
+                                                <span class="label-before">Confirm Email *</span>
+                                                <input data-val="true" data-val-equalto="The e-mail was not correctly confirmed. Please ensure that the e-mail and confirmation match exactly." data-val-equalto-other="*.Email" id="confirmEmail" name="ConfirmEmail" placeholder="Confirm Email *" type="text" value="" />
+                                                <span class="field-validation-valid" data-valmsg-for="ConfirmEmail" data-valmsg-replace="true"></span>
+
+                                                <span class="label-before">Password *</span>
+                                                <input id="password" name="Password" placeholder="Password *" type="password" />
+                                                <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+
+                                                <span class="label-before">Confirm Password *</span>
+                                                <input data-val="true" data-val-equalto="The password was not correctly confirmed. Please ensure that the password and confirmation match exactly." data-val-equalto-other="*.Password" id="confirmPassword" name="ConfirmPassword" placeholder="Confirm Password *" type="password" />
+                                                <span class="field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                                                <div style="display: none;">
+
+
+                                                    <input id="securityQuestion" name="SecurityQuestion" placeholder="Security Question *" type="text" value="Question" />
+                                                    <span class="field-validation-valid" data-valmsg-for="SecurityQuestion" data-valmsg-replace="true"></span>
+                                                    <input id="securityAnswer" name="SecurityAnswer" placeholder="Security Answer *" type="text" value="Answer" />
+                                                    <span class="field-validation-valid" data-valmsg-for="SecurityAnswer" data-valmsg-replace="true"></span>
+                                                    <label style="margin-bottom: 10px; display: inline-block;">
+                                                        <input checked="checked" data-val="true" data-val-required="The IsAgree field is required." id="ssAgree" name="IsAgree" type="checkbox" value="true" /><input name="IsAgree" type="hidden" value="false" />
+                                                        He leido y estoy de acuerdo con <a href="http://www.50friends.mx/privacidad.html" target="_blank">los terminos de uso</a>
+
+                                                    </label>
+                                                    <span class="field-validation-valid" data-valmsg-for="IsAgree" data-valmsg-replace="true"></span>
+                                                    <div class="clear"></div>
+
+
+                                                </div>
+                                                <label>
+                                                    <input data-val="true" data-val-required="The IsSubscriber field is required." id="ssSubscriber" name="IsSubscriber" type="checkbox" value="true" /><input name="IsSubscriber" type="hidden" value="false" />
+                                                    Subscribe To Emails
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="submit" class="btnSubmit" value="SIGN UP" />
+                                            <input type="button" class="btnSubmit" onclick="ClearAllChildFieldsAndErrors('registrationModal');" data-dismiss="modal" value="Cancel" />
+                                            <p>
+                                                <span class="tip-star">*</span>
+                                                Means required field
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </form></div>
+                            <div id="StepRegistration"><form action="/order/Login/StepRegistration" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-success="onSuccess" data-ajax-update="#StepRegistration" id="form6" method="post">    <div class="stepRegistration" id="registrationModalMobile">
+                                <h1 class="modal-title">Registration</h1>
+
+                                <span class="label-before">First Name  * </span>
+                                <input id="firstname" name="FirstName" placeholder="First Name *" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+
+                                <span class="label-before">Last Name  * </span>
+                                <input id="lastname" name="LastName" placeholder="Last Name *" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                                <div id="registrationForm">
+                                    <p>Birthday (Must be 13 or older)<span class="tip-star"></span></p>
+                                    <div class="clear"></div>
+                                    <div class="inputField">
+                                        <div class="inputSubfield thirdPartField" style="width: 64%">
+                                            <select class="dropdownList" data-val="true" data-val-number="The field BirthdayMonth must be a number." data-val-required="The BirthdayMonth field is required." id="birthdaymonth" name="BirthdayMonth" placeholder="Month"><option value="1">January</option>
+                                                <option value="2">February</option>
+                                                <option value="3">March</option>
+                                                <option value="4">April</option>
+                                                <option value="5">May</option>
+                                                <option value="6">June</option>
+                                                <option value="7">July</option>
+                                                <option value="8">August</option>
+                                                <option value="9">September</option>
+                                                <option value="10">October</option>
+                                                <option value="11">November</option>
+                                                <option value="12">December</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="inputSubfield thirdPartField">
+                                            <select class="dropdownList" id="birthdayday" name="BirthdayDay" placeholder="Day"><option value="1">01</option>
+                                                <option value="2">02</option>
+                                                <option value="3">03</option>
+                                                <option value="4">04</option>
+                                                <option value="5">05</option>
+                                                <option value="6">06</option>
+                                                <option value="7">07</option>
+                                                <option value="8">08</option>
+                                                <option value="9">09</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div style="display: none;">
+
+                                        <input id="company" name="Company" placeholder="Company" type="text" value="Company" />
+                                        <input id="appsuit" name="AppSuit" placeholder="App" type="text" value="AppSuit" />
+                                        <input id="address" name="AddressStreet" placeholder="Street Address" type="text" value="AddressStreet" />
+
+
+                                    </div>
+                                    <span class="label-before">ZIP </span>
+                                    <div class="inputField">
+                                        <div style="display: none;">
+
+
+                                            <div class="inputSubfield thirdPartField">
+                                                <input id="city" name="City" placeholder="City*" type="text" value="City" />
+                                            </div>
+
+                                        </div>
+                                        <div class="inputSubfield thirdPartField zipCodeOnly">
+                                            <input id="zip" name="Zip" placeholder="ZIP" type="text" value="" />
+                                        </div>
+                                        <div style="display: none;">
+
+                                            <div class="inputSubfield thirdPartField">
+                                                <select class="dropdownList" data-val="true" data-val-number="The field State must be a number." data-val-required="The State field is required." id="state" name="State"><option value="1">AL</option>
+                                                    <option value="2">AK</option>
+                                                    <option value="3">AZ</option>
+                                                    <option value="4">AR</option>
+                                                    <option value="5">CA</option>
+                                                    <option value="6">CO</option>
+                                                    <option value="7">CT</option>
+                                                    <option value="8">DE</option>
+                                                    <option value="9">DC</option>
+                                                    <option value="10">FL</option>
+                                                    <option value="11">GA</option>
+                                                    <option value="12">HI</option>
+                                                    <option value="13">ID</option>
+                                                    <option value="14">IL</option>
+                                                    <option value="15">IN</option>
+                                                    <option value="16">IA</option>
+                                                    <option value="17">KS</option>
+                                                    <option value="18">KY</option>
+                                                    <option value="19">LA</option>
+                                                    <option value="20">ME</option>
+                                                    <option value="21">MD</option>
+                                                    <option value="22">MA</option>
+                                                    <option value="23">MI</option>
+                                                    <option value="24">MN</option>
+                                                    <option value="25">MS</option>
+                                                    <option value="26">MO</option>
+                                                    <option value="27">MT</option>
+                                                    <option value="28">NE</option>
+                                                    <option value="29">NV</option>
+                                                    <option value="30">NH</option>
+                                                    <option value="31">NJ</option>
+                                                    <option value="32">NM</option>
+                                                    <option value="33">NY</option>
+                                                    <option value="34">NC</option>
+                                                    <option value="35">ND</option>
+                                                    <option value="36">OH</option>
+                                                    <option value="37">OK</option>
+                                                    <option value="38">OR</option>
+                                                    <option value="39">PA</option>
+                                                    <option value="40">PR</option>
+                                                    <option value="41">RI</option>
+                                                    <option value="42">SC</option>
+                                                    <option value="43">SD</option>
+                                                    <option value="44">TN</option>
+                                                    <option value="45">TX</option>
+                                                    <option value="46">UT</option>
+                                                    <option value="47">VT</option>
+                                                    <option value="48">VI</option>
+                                                    <option value="49">VA</option>
+                                                    <option value="50">WA</option>
+                                                    <option value="51">WV</option>
+                                                    <option value="52">WI</option>
+                                                    <option value="53">WY</option>
+                                                    <option value="54">OT</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <span class="field-validation-valid" data-valmsg-for="Zip" data-valmsg-replace="true"></span>
+
+                                    <span class="label-before">Phone *</span>
+                                    <input id="phone" name="Phone" placeholder="Phone *" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="Phone" data-valmsg-replace="true"></span>
+
+                                    <span class="label-before">Email *</span>
+                                    <input data-val="true" data-val-remote="&#39;Email&#39; is invalid." data-val-remote-additionalfields="*.Email" data-val-remote-type="POST" data-val-remote-url="/order/Login/IsNotEmailExist" id="email" name="Email" placeholder="Email *" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+
+                                    <span class="label-before">Confirm Email *</span>
+                                    <input data-val="true" data-val-equalto="The e-mail was not correctly confirmed. Please ensure that the e-mail and confirmation match exactly." data-val-equalto-other="*.Email" id="confirmEmail" name="ConfirmEmail" placeholder="Confirm Email *" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ConfirmEmail" data-valmsg-replace="true"></span>
+
+                                    <span class="label-before">Password *</span>
+                                    <input id="password" name="Password" placeholder="Password *" type="password" />
+                                    <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+
+                                    <span class="label-before">Confirm Password *</span>
+                                    <input data-val="true" data-val-equalto="The password was not correctly confirmed. Please ensure that the password and confirmation match exactly." data-val-equalto-other="*.Password" id="confirmPassword" name="ConfirmPassword" placeholder="Confirm Password *" type="password" />
+                                    <span class="field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                                    <div style="display: none;">
+
+
+                                        <input id="securityQuestion" name="SecurityQuestion" placeholder="Security Question *" type="text" value="Question" />
+                                        <span class="field-validation-valid" data-valmsg-for="SecurityQuestion" data-valmsg-replace="true"></span>
+                                        <input id="securityAnswer" name="SecurityAnswer" placeholder="Security Answer *" type="text" value="Answer" />
+                                        <span class="field-validation-valid" data-valmsg-for="SecurityAnswer" data-valmsg-replace="true"></span>
+                                        <label style="margin-bottom: 10px; display: inline-block;">
+                                            <input checked="checked" data-val="true" data-val-required="The IsAgree field is required." id="ssAgree" name="IsAgree" type="checkbox" value="true" /><input name="IsAgree" type="hidden" value="false" />
+                                            He leido y estoy de acuerdo con <a href="http://www.50friends.mx/privacidad.html" target="_blank">los terminos de uso</a>
+
+                                        </label>
+                                        <span class="field-validation-valid" data-valmsg-for="IsAgree" data-valmsg-replace="true"></span>
+                                        <div class="clear"></div>
+
+
+                                    </div>
+                                    <label>
+                                        <input data-val="true" data-val-required="The IsSubscriber field is required." id="ssSubscriber" name="IsSubscriber" type="checkbox" value="true" /><input name="IsSubscriber" type="hidden" value="false" />
+                                        Subscribe To Emails
+                                    </label>
+                                </div>
+
+                                <input type="submit" class="btnSubmit" value="SIGN UP" />
+                                <p>
+                                    <span class="tip-star">*</span>
+                                    Means required field
+                                </p>
+
+                            </div>
+                            </form></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-wrapper">
+            <iframe src="order/LocalSettings/rink/controls/footer.html" frameborder="0" width="100%" name="FrameFooter" scrolling="no" class="footerIframe"  style="height: 352px;"></iframe>
+        </div>
+
+
+    </div>
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script src="order/Scripts/libs/bootstrap-datepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap-timepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap.js"></script>
+
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.2.min.js">\x3C/script>')</script>
+
+<script src="order/Scripts/plugins.js"></script>
+<script src="order/Scripts/main.js"></script>
+
+<script type="text/javascript">
+    var onSuccess = function (result) {
+        if (result.url) {
+            window.location.href = result.url;
+        }
+    };
+
+    (function initializeForgetPassword() {
+        $(document).on('click', '.forgot-password', function () {
+            $("#forgotPass").toggle();
+        });
+    })();
+
+</script>
+
+
+</body>
+</html>
+

@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<html lang="en" xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Cache-control" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <title>Smarter Takeout</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=100">
+    <!--<link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet' type='text/css'>-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+
+    <link href="order/Content/css/normalize.css" rel="stylesheet"/>
+    <link href="order/Content/css/datepicker.css" rel="stylesheet"/>
+    <link href="order/Content/css/bootstrap-timepicker.css" rel="stylesheet"/>
+
+    <link href="order/Content/Site.css" rel="stylesheet"/>
+
+    <script src="order/Scripts/libs/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+
+    <script src="order/Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+    <script src="order/Scripts/modernizr-2.6.2.js"></script>
+    <script src="order/Scripts/libs/modernizr-2.6.2-custom.js"></script>
+
+
+    <script src="order/bundles/modernizr?v=vDRj3L7j8c0oVwcr5naO37v2EF_wmuRlhPc_Cbe3L-41"></script>
+
+    <link href="order/LocalSettings/rink/styles/rink_style.css" rel="stylesheet"/>
+
+    <script src="https://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        _uacct = "UA-2254943-1";
+        urchinTracker();
+    </script>
+
+</head>
+<body>
+
+
+<div class="ci-page-bg-visual ci-bg-rosemary">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-basilicum">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-tomatoes">&nbsp;</div>
+
+<section style="height: 100%; min-height: 100%">
+    <div class="fixbg">
+
+
+        <script type="text/javascript">
+            (function (d) {
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement('script');
+                js.id = id;
+                js.async = true;
+                js.src = document.location.protocol + "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+            window.fbAsyncInit = function () {
+                var isLoginClick = false;
+                FB.init({appId: '501365963275166', status: true, cookie: true, xfbml: true});
+                FB.Event.subscribe('auth.statusChange', function (response) {
+                    if (response.authResponse) {
+                        // user has auth'd your app and is logged into Facebook
+                        FB.api('/me', function (me) {
+                            if (me.name) {
+                                document.getElementById('nameUser').value = me.name;
+                                document.getElementById('emailUser').value = me.email;
+                                document.getElementById('auth-email').innerHTML = me.email;
+                                document.getElementById('auth-displayname').innerHTML = me.name;
+                                document.getElementById('nameUsermobile').value = me.name;
+                                document.getElementById('emailUsermobile').value = me.email;
+                                document.getElementById('auth-emailmobile').innerHTML = me.email;
+                                document.getElementById('auth-displaynamemobile').innerHTML = me.name;
+                                if (isLoginClick) {
+                                    $("#loginToSiteBtn").click();
+                                    $("#loginToSiteBtnmobile").click();
+                                }
+                            } else {
+                                isLoginClick = false;
+                            }
+
+                        });
+                        document.getElementById('auth-loggedout').style.display = 'none';
+                        document.getElementById('auth-loggedin').style.display = 'block';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'none';
+                        document.getElementById('auth-loggedinmobile').style.display = 'block';
+                    } else {
+                        // user has not auth'd your app, or is not logged into Facebook
+                        document.getElementById('auth-loggedout').style.display = 'block';
+                        document.getElementById('auth-loggedin').style.display = 'none';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'block';
+                        document.getElementById('auth-loggedinmobile').style.display = 'none';
+                        isLoginClick = false;
+                    }
+                });
+                $("#auth-logoutlink").click(function () {
+                    FB.logout(function () {
+                        window.location.reload();
+                    });
+                });
+                $("#lgtoFB").click(function () {
+                    FB.login(function () {
+                        isLoginClick = true;
+                    }, {scope: 'email'});
+                });
+                $("#lgtosite").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtn").click();
+                });
+                $("#auth-logoutlinkmobile").click(function () {
+                    FB.logout(function () {
+                        window.location.reload();
+                    });
+                });
+                $("#lgtoFBmobile").click(function () {
+                    FB.login(function () {
+                        isLoginClick = true;
+                    }, {scope: 'email'});
+                });
+                $("#lgtositemobile").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtnmobile").click();
+                });
+            };
+        </script>
+        <div class="pageWrap">
+
+            <header>
+                <div class="mobile">
+                    <div class="mobile-main-header">
+                        <div class="menu-left">
+                            <div class="menu-left-icon"></div>
+                        </div>
+                        <div id="branding" role="banner">
+                            <div class="ci-content-positioner">
+                                <a rel="home" href="#">
+                                    <img width="135" height="36" class="ci-sitelogo ci-sitelogo-rpg " alt="PRG logo" src="order/LocalSettings/rink/images/prg-logo.png"></a>
+
+                                <a rel="home" href="#">
+                                    <img width="95" height="89" class="ci-sitelogo ci-sitelogo-main" alt="Logo" src="order/LocalSettings/rink/images/logo.png"></a>
+
+                                <div class="ci-clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-in">
+                            <a href="#">Sign In</a>
+                        </div>
+                    </div>
+                    <div class="mobile-steps-bg">
+                        <span class="step"> Step 1 - <span class="step-mob">Registration</span></span>
+                    </div>
+
+                </div>
+
+
+                <section class="clearfix">
+
+
+                    <a href="#" class="logo"></a>
+
+                    <div height="103px" style="width:">
+
+                        <div style="display: inline; height:103px">
+                            <iframe src="order/LocalSettings/rink/controls/header.html" frameborder="0"
+                                    style="overflow:hidden;overflow-x:hidden;overflow-y:hidden; height: 103px ;width:100%;position:absolute;z-index:0; top:0px;left:0px;right:0px;bottom:0px" scrolling="no"></iframe>
+                        </div>
+
+                    </div>
+                </section>
+            </header>
+            <div id="wrap">
+                <div id="panel">
+                    <div class="pageBlock">
+                        <div class="checkoutSteps">
+                            <ul class="clearfix">
+                                <li>
+                                    <div class="current">
+                                        <p>
+                                            <span class="step-link_number_active_step dot one"></span>
+                                            <span class="step-link_active_text">Registration</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <p>
+                                            <span class="step-link_number_active_step dot two"></span>
+                                            <span class="breadcrumb_next_step_text">Date and Time</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <p>
+                                            <span class="step-link_number_next_step dot three"></span>
+                                            <span class="breadcrumb_next_step_text">Order</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <p>
+                                            <span class="step-link_number_next_step dot four"></span>
+                                            <span class="breadcrumb_next_step_text">Review and Place Order</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="content-step clearfix">
+                            <div class="clearfix">
+                                <div id="ctl00_ContentPlaceHolder1_PopupWarning_warningpopup">
+
+                                    <div class="bg_popup_order" style="display:none;">
+                                        <div class="popupWrap_order">
+                                            <div style="width:70%;padding-left:15%; ">
+                                                <div style="padding-bottom:20px;">
+
+
+                                                </div>
+                                                <div class="row">
+                                                    <span class="envelopeBtn grey left"><span id="ctl00_ContentPlaceHolder1_PopupWarning_LogoutFromOrder" class="link-second" onclick="$('.logout-link').click()">Log out</span></span>
+                                                    <span class="envelopeBtn light right"><a id="ctl00_ContentPlaceHolder1_PopupWarning_ProceedLinkBtn" class="link-second" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$PopupWarning$ProceedLinkBtn','')">Proceed
+                                                        to Reservation</a></span>
+
+                                                    <div style="display:none;">
+                                                        <input type="submit" name="ctl00$ContentPlaceHolder1$PopupWarning$logout" value="" id="ctl00_ContentPlaceHolder1_PopupWarning_logout" class="logout-link">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clear">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="order-block">
+
+                                <div class="order-block">
+                                    <div class="title">
+                                        <p>
+                                            Saturday, June, 13, 2015
+                                            5:00 PM
+                                            to
+                                            6:30 PM
+                                        </p>
+
+                                        <p>Number of Guests &amp; Package Selection
+                                        </p>
+                    <span><span style="color: rgb(114, 114, 114); font-family: Oxygen; font-size: 13px; text-align: center;">You may enter or change the number of guests in the table below</span>
+                    </span>
+
+                                        <div class="cost-person">
+                                            <p>PROPER ENGLISH FEAST AT ROCK CENTER CAFE   </p>
+                                            <p><span style="color: black;font-size: 16px;font-weight: bold;" data-total="0" class="order-total">$48.00</span></p>
+                                        </div>
+
+                                        <p>Available Tickets
+                                            <span style="color:#F58C42; font-size: 16px;" data-available-tickets="24" class="available-tickets">23</span>
+
+                                        </p>
+                                    </div>
+
+                                    <div class="order-form">
+                                        <p>Please enter your ticket quantities:<br></p>
+                                        <div class="counter-box">
+
+                                            <div class="counter" style="margin-top: 10px">
+
+                               <span style="color:#F58C42;font-size:90%; font-weight: bold; width:140px;display:inline-block;height: 15px;text-align: center;">
+                                   Tickets
+                               </span>
+                                                <br>
+                               <span style="color:#F58C42;font-size:90%; font-weight: bold; width:140px;display:inline-block;height: 15px;text-align: center;">
+
+                               </span>
+
+                                                <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input class="spinner ui-spinner-input" id="spinner-57" style="text-align:center;width:120px;border:none;background:none;" name="value" placeholder="Enter Quantity" data-min="1" data-max="10" data-guest-type-id="57" data-price="48.00" data-is-person="True" aria-valuemin="1" aria-valuemax="10" autocomplete="off" role="spinbutton" aria-valuenow="1"><a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span></a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button" aria-disabled="false"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s">▼</span></span></a></span>
+
+                                           <span style="color:#F58C42;font-size:90%; font-weight: bold; width:140px;display:inline-block;height: 15px;text-align: center;">
+                                               $48.00
+
+                                           </span>
+                                            </div>
+                                        </div>
+
+                                        <div style="">
+                                            <label style="float:left;font-weight:bold;">
+                                                <span class="IsSingleForm" style="margin:0 0 2px"><input id="ctl00_ContentPlaceHolder1_welcomPanel_IsSingleForm" type="checkbox" name="ctl00$ContentPlaceHolder1$welcomPanel$IsSingleForm"></span>
+                                            <span class="name" style="font-weight:normal">
+                                            I would like to assign and define the names for the reservation
+                                            </span>
+                                            </label>
+                                            <br>
+                                            <br>
+                                        </div>
+
+                                        <div id="guest-type-full-form">
+                                            <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$GuestTypeIsPersonFlag" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_GuestTypeIsPersonFlag" value="True">
+
+                                            <span style="display: none;" data-guest-count-single="0" class="guest-count-single-57">1</span>
+
+
+                                            <div id="order-box-57" class="order-box">
+
+
+                                                <div class="img-block person-img" style="margin-top: 5px;">
+                                                    <img width="30px" height="30px" src="https://therinkatrockcenter.com:443/UserFiles/RinkGuestTypes/wh.130x150.jpg">
+                                                </div>
+
+                                                <div id="person-guesttype-title-57" style="margin-top: 15px; display: none;">
+                                         <span style="font-size: 100%; float: left;color: #727272;">
+                                             PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets Reservation
+                                         </span>
+                                                </div>
+
+                                                <span id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_GuestTypeName" hidden="true">57</span>
+
+                                                <div id="attribute-blocks-guest-type-57">
+
+                                                    <div style="overflow: auto; display: block;" id="attribute-block-57-0" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_VisibilityFlagLbl" value="true">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                            <span style="color: #727272; display: block;">
+                                                                $48.00
+                                                            </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="0" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-0" class="form-row">
+
+                                                                       <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 1 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                                         Guest #1 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                                       </span>
+
+                                                                       <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #1')" onmouseout="UnTip()">
+                                                                         Tickets #1
+                                                                       </span>
+
+                                                            <br>
+
+                                                            <div class="full" style="display: none;">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl00_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl00$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl00_TextboxRepeater_ctl02_AttributePriceTextbox">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-0" style="display: none;">
+
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-0" class="total-for-guest-each-57-0" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-1" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_VisibilityFlagLbl" value="false">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                                                <span style="color: #727272; display: block;">
+                                                                                    $48.00
+                                                                                </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="1" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-1" class="form-row">
+
+                                                                       <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 2 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                                         Guest #2 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                                       </span>
+
+                                                                       <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #2')" onmouseout="UnTip()">
+                                                                         Tickets #2
+                                                                       </span>
+                                                            <br>
+
+                                                            <div class="full" style="display: none;">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl00_AttributePriceTextbox">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl01$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl01_TextboxRepeater_ctl02_AttributePriceTextbox">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-1" style="display: none;">
+
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-1" class="total-for-guest-each-57-1" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-2" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_VisibilityFlagLbl" value="false">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                                <span style="color: #727272; display: block;">
+                                                                    $48.00
+                                                                </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="2" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-2" class="form-row">
+
+                                                                       <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 3 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                                         Guest #3 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                                       </span>
+
+                                                                       <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #3')" onmouseout="UnTip()">
+                                                                         Tickets #3
+                                                                       </span>
+
+                                                            <br>
+
+                                                            <div class="full" style="display: none;">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl00_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl02$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl02_TextboxRepeater_ctl02_AttributePriceTextbox">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-2" style="display: none;">
+
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-2" class="total-for-guest-each-57-2" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-3" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_VisibilityFlagLbl" value="false">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                                                <span style="color: #727272; display: block;">
+                                                                                    $48.00
+                                                                                </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="3" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-3" class="form-row">
+
+                                                           <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 4 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                             Guest #4 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                           </span>
+
+                                                           <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #4')" onmouseout="UnTip()">
+                                                             Tickets #4
+                                                           </span>
+
+                                                            <br>
+
+                                                            <div class="full" style="display: none;">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl00_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl01_AttributePriceTextbox">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl03$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl03_TextboxRepeater_ctl02_AttributePriceTextbox">
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-3" style="display: none;">
+
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-3" class="total-for-guest-each-57-3" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-4" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_VisibilityFlagLbl" value="false">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                            <span style="color: #727272; display: block;">
+                                                                $48.00
+                                                            </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="4" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-4" class="form-row">
+
+                                                               <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 5 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                                 Guest #5 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                               </span>
+
+                                                               <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #5')" onmouseout="UnTip()">
+                                                                 Tickets #5
+                                                               </span>
+                                                            <br>
+
+                                                            <div class="full" style="display: none;">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl00_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl04$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl04_TextboxRepeater_ctl02_AttributePriceTextbox">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-4" style="display: none;">
+
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-4" class="total-for-guest-each-57-4" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-5" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_VisibilityFlagLbl" value="false">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                            <span style="color: #727272; display: block;">
+                                                                $48.00
+                                                            </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="5" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-5" class="form-row">
+
+                                                           <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 6 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                             Guest #6 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                           </span>
+
+                                                           <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #6')" onmouseout="UnTip()">
+                                                             Tickets #6
+                                                           </span>
+                                                            <br>
+
+                                                            <div class="full" style="display: none;">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl00_AttributePriceTextbox">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl05$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl05_TextboxRepeater_ctl02_AttributePriceTextbox">
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-5" style="display: none;">
+
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                             <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-5" class="total-for-guest-each-57-5" data-total-for-guest-each="48.00">
+                                                                 $48.00
+                                                             </span>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-6" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_VisibilityFlagLbl" value="false">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                            <span style="color: #727272; display: block;">
+                                                                $48.00
+                                                            </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="6" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-6" class="form-row">
+
+                                                           <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 7 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                             Guest #7 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                           </span>
+
+                                                           <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #7')" onmouseout="UnTip()">
+                                                             Tickets #7
+                                                           </span>
+                                                            <br>
+
+                                                            <div class="full" style="display: none;">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl00_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl06$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl06_TextboxRepeater_ctl02_AttributePriceTextbox">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-6" style="display: none;">
+
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-6" class="total-for-guest-each-57-6" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-7" class="attribute-block">
+
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_VisibilityFlagLbl" value="false">
+
+                                                        <p class="cost" style="margin-right: 10px;">
+
+                                                                <span style="color: #727272; display: block;">
+                                                                    $48.00
+                                                                </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="7" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-7" class="form-row">
+                                                                       <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 8 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                                         Guest #8 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                                       </span>
+
+                                                                       <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #8')" onmouseout="UnTip()">
+                                                                         Tickets #8
+                                                                       </span>
+                                                            <br>
+                                                            <div class="full" style="display: none;">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl00_AttributePriceTextbox">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl07$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl07_TextboxRepeater_ctl02_AttributePriceTextbox">
+                                                            </div>
+                                                        </div>
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-7" style="display: none;">
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-7" class="total-for-guest-each-57-7" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+                                                        </div>
+                                                    </div>
+                                                    <div style="display: none; overflow: auto;" id="attribute-block-57-8" class="attribute-block">
+                                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$VisibilityFlagLbl" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_VisibilityFlagLbl" value="false">
+                                                        <p class="cost" style="margin-right: 10px;">
+                                                                <span style="color: #727272; display: block;">
+                                                                    $48.00
+                                                                </span>
+
+                                                            <a class="close-row" data-guest-type-id="57" data-item-index="8" href="javascript:void(0)">
+                                                            </a>
+                                                        </p>
+
+                                                        <div id="form-row-57-8" class="form-row">
+
+                                                           <span style="display: ;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Guest # 9 : PROPER ENGLISH FEAST AT ROCK CENTER CAFE Tickets')" onmouseout="UnTip()">
+                                                             Guest #9 : PROPER ENGLISH FEAST AT ROCK CENTER CAF...
+                                                           </span>
+
+                                                           <span style="display: none;color: #727272;position:relative;top:-6px;" onmouseover="tipProductName('Tickets #9')" onmouseout="UnTip()">
+                                                             Tickets #9
+                                                           </span>
+                                                            <br>
+                                                            <div class="full" style="display: none;">
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl00$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl00_AttributeValueTextbox" class="txt" placeholder="First Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl00$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl00_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl00$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl00_AttributeIDTextbox" value="4">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl00$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl00_AttributeNameTextbox" value="First Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl00$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl00_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl00$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl00_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl01$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl01_AttributeValueTextbox" class="txt" placeholder="Last Name" style="width:107px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl01$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl01_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl01$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl01_AttributeIDTextbox" value="5">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl01$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl01_AttributeNameTextbox" value="Last Name">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl01$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl01_AttributeShowOnTheReceiptTextbox" value="True">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl01$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl01_AttributePriceTextbox">
+
+                                                                <input name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl02$AttributeValueTextbox" type="text" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl02_AttributeValueTextbox" class="txt" placeholder="Email" style="width:185px;margin-top: 10px;">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl02$AttributeIsRequired" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl02_AttributeIsRequired" value="False">
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl02$AttributeIDTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl02_AttributeIDTextbox" value="7">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl02$AttributeNameTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl02_AttributeNameTextbox" value="Email">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl02$AttributeShowOnTheReceiptTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl02_AttributeShowOnTheReceiptTextbox" value="False">
+
+                                                                <input type="hidden" name="ctl00$ContentPlaceHolder1$welcomPanel$GuestTypePersonRepeater$ctl00$RinkGuestTypeAttributeBlockRepeater$ctl08$TextboxRepeater$ctl02$AttributePriceTextbox" id="ctl00_ContentPlaceHolder1_welcomPanel_GuestTypePersonRepeater_ctl00_RinkGuestTypeAttributeBlockRepeater_ctl08_TextboxRepeater_ctl02_AttributePriceTextbox">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="attribute-block-total-each" id="attribute-block-total-each-57-8" style="display: none;">
+                                                            <span style="display: block; float: right; width: 80px; margin-left: 5px;margin-top:5px; height: 1px; background: #a6a6a6;"></span>
+                                                                     <span style="color: #727272;margin-left: 415px; font-weight: bold" id="total-for-guest-each-57-8" class="total-for-guest-each-57-8" data-total-for-guest-each="48.00">
+                                                                         $48.00
+                                                                     </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+                                            <div class="attribute-block-total-single" id="attribute-block-total-single-57" style="margin-bottom: 10px;">
+                                                <p style="color: #727272;margin-left: 525px;font-weight: bold;">
+                                                    <span data-total-for-guest-type="0" id="total-for-guest-type-57" class="total-for-guest-type-57">$48.00</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="cost-person">
+                                            <p>Totals <span data-guests="0" class="guest-count">1</span></p>
+                                            <p>Order total: <span data-total="0" class="order-total">$48.00</span></p>
+                                        </div>
+
+                                        <span class="envelopeBtn"><a id="ctl00_ContentPlaceHolder1_welcomPanel_PreviousBtn" class="link" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$welcomPanel$PreviousBtn','')">Previous</a></span>
+                                           <span class="envelopeBtn" style="float: right">
+                                               <a data-add-to-order-btn="#ctl00_ContentPlaceHolder1_welcomPanel_AddToOrderBtn" data-add-to-order-popup-btn="#ctl00_ContentPlaceHolder1_welcomPanel_AddToOrderPopupBtn" href="javascript:void(0)" type="submit" class="link" id="BtnAddToOrder">
+
+                                                   Add To Order
+                                               </a>
+                                           </span>
+
+                                        <input type="submit" name="ctl00$ContentPlaceHolder1$welcomPanel$AddToOrderPopupBtn" value="Submit" id="ctl00_ContentPlaceHolder1_welcomPanel_AddToOrderPopupBtn" style="display: none">
+                                        <input type="submit" name="ctl00$ContentPlaceHolder1$welcomPanel$AddToOrderBtn" value="Submit" id="ctl00_ContentPlaceHolder1_welcomPanel_AddToOrderBtn" style="display: none">
+
+                                    </div>
+
+                                </div>
+
+
+                                <div style="display: none;">
+
+                                    <div id="dialog-confirm" title="Error message.">
+                                        <p style="font-size: 70%">
+                                            You’ve requested to define individual names for you guest(s) with this reservation.
+                                            Would you like continue adding these items to your cart without setting the names?
+                                        </p>
+                                    </div>
+                                    <div id="dialog-required" title="Error message.">
+                                        <p style="font-size: 70%">
+                                            You should define individual names for you guest(s) with this reservation.
+                                        </p>
+                                    </div>
+
+                                    <div id="dialog-mesage" title="Error message.">
+                                        <p style="font-size: 70%">
+                                            Please select at least one guest.
+                                        </p>
+                                    </div>
+
+                                    <div id="dialog-mesage-counter" title="Error message.">
+                                        <p style="font-size: 70%">
+                                            Please enter the valid number of tickets.
+                                        </p>
+                                    </div>
+
+                                    <div id="dialog-mesage-available-tickets" title="Error message.">
+                                        <p style="font-size: 70%">
+                                            You have exceeded the number of reservations available.
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <script type="text/javascript">
+                                    initDropdown();
+                                </script>
+
+                            </div>
+                            <div class="order-final">
+
+                                <div id="ctl00_ContentPlaceHolder1_orderDetailsPanel">
+
+                                    <div class="current-order banner banner1 saleBlocknew order" id="ctl00_ContentPlaceHolder1_orderDetailsForm">
+
+                                        <div class="bannerContent flo">
+
+                                             <span class="title">
+                                                Current Order
+                                             </span>
+
+                                            <div class="rowOrder">
+
+                                                <span class="date"><span class="icon"></span>Sat, Jun 13</span>
+                                                <span class="time"><span class="icon"></span>5:00 PM</span>
+                                                <span id="ctl00_ContentPlaceHolder1_orderDetailsForm_orderName" class="order-name txt text-placeholder">rrr rrrr</span>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="bannerContent flo">
+
+                                            <div class="box"></div>
+
+                                            <span class="greyLine"></span>
+
+                                        </div>
+
+                                        <div class="bannerContent flo">
+                                            <div class="box">
+                                                <table cellspacing="0" cellpadding="0" border="0" class="totalPriceTable" style="width: 260px">
+
+                                                    <tbody><tr class="totalRow">
+                                                        <td class="dataRow ">
+                                                            Subtotal:
+                                                        </td>
+                                                        <td class="costRow pricesOrderFormTd" style="text-align: right;">
+                                                            <span class="pricesOrderForm">
+                                                                $0.00
+                                                            </span>
+                                                        </td>
+                                                        <td style="width: 17px;">
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="totalRow taxrow">
+                                                        <td class="dataRow">
+                                                            Discount Amount:
+                                                        </td>
+                                                        <td class="costRow pricesOrderFormTd" style="text-align: right;">
+                                                            <span class="pricesOrderForm">
+                                                                $0.00
+                                                            </span>
+                                                        </td>
+                                                        <td style="width: 17px;">
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="totalRow taxrow">
+                                                        <td class="dataRow">
+                                                            Tax (8.875%):
+                                                        </td>
+                                                        <td class="costRow pricesOrderFormTd" style="text-align: right;">
+                                                            <span class="pricesOrderForm">
+                                                                $0.00
+                                                            </span>
+                                                        </td>
+                                                        <td style="width: 17px;">
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="totalRow taxrow">
+                                                        <td class="dataRow">
+                                                            Service charge (18.00%):
+                                                        </td>
+                                                        <td class="costRow pricesOrderFormTd" style="text-align: right;">
+                                                            <span class="pricesOrderForm">
+                                                                $0.00
+                                                            </span>
+                                                        </td>
+                                                        <td style="width: 17px;">
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="totalRow colorOrange">
+                                                        <td class="dataRow ">
+                                                            Total:
+                                                        </td>
+                                                        <td class="costRow pricesOrderFormTd" style="text-align: right;">
+                                                            <span class="pricesOrderForm">
+                                                                $0.00
+                                                            </span>
+                                                        </td>
+                                                        <td style="width: 17px;">
+                                                        </td>
+                                                    </tr>
+                                                    </tbody></table>
+
+                                                <div class="row2" style="text-align:center">
+                                                    <span class="envelopeBtn"><a id="ctl00_ContentPlaceHolder1_orderDetailsForm_bagintButton2" class="link chekOut" validationgroup="orderDetailsForm" onclick="javascript:void();" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$orderDetailsForm$bagintButton2", "", true, "orderDetailsForm", "", false, true))'>Check Out</a></span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <span id="ctl00_ContentPlaceHolder1_orderDetailsForm_emptyNameValidator" style="color:Red;display:none;"></span>
+                                        <span id="ctl00_ContentPlaceHolder1_orderDetailsForm_maxLengthNameValidator" style="color:Red;display:none;"></span>
+                                        <span id="ctl00_ContentPlaceHolder1_orderDetailsForm_emptyOrderValidator" style="color:Red;display:none;"></span>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="ctl00_ContentPlaceHolder1_finalOrderPanel">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-wrapper">
+            <iframe src="order/LocalSettings/rink/controls/footer.html" frameborder="0" width="100%" name="FrameFooter" scrolling="no" class="footerIframe" style="height: 352px;"></iframe>
+        </div>
+
+
+    </div>
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script src="order/Scripts/libs/bootstrap-datepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap-timepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap.js"></script>
+
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.2.min.js">\x3C/script>')</script>
+
+<script src="order/Scripts/plugins.js"></script>
+<script src="order/Scripts/main.js"></script>
+
+<script type="text/javascript">
+    var onSuccess = function (result) {
+        if (result.url) {
+            window.location.href = result.url;
+        }
+    };
+
+    (function initializeForgetPassword() {
+        $(document).on('click', '.forgot-password', function () {
+            $("#forgotPass").toggle();
+        });
+    })();
+
+</script>
+
+
+</body>
+</html>
+

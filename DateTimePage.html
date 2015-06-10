@@ -1,0 +1,632 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en" xmlns:fb="https://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Smarter Takeout</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=100" >
+    <!--<link href='https://fonts.googleapis.com/css?family=Ruda' rel='stylesheet' type='text/css'>-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>-->
+    <link href='http://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+
+    <link href="order/Content/css/normalize.css" rel="stylesheet" />
+    <link href="order/Content/css/datepicker.css" rel="stylesheet" />
+    <link href="order/Content/css/bootstrap-timepicker.css" rel="stylesheet" />
+
+    <link href="order/Content/Site.css" rel="stylesheet" />
+
+    <script src="order/Scripts/libs/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
+
+    <script src="order/Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="order/Scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+    <script src="order/Scripts/modernizr-2.6.2.js"></script>
+    <script src="order/Scripts/libs/modernizr-2.6.2-custom.js"></script>
+
+
+    <script src="order/bundles/modernizr?v=vDRj3L7j8c0oVwcr5naO37v2EF_wmuRlhPc_Cbe3L-41"></script>
+
+    <link href="order/LocalSettings/rink/styles/rink_style.css" rel="stylesheet" />
+
+    <script src="https://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        _uacct = "UA-2254943-1";
+        urchinTracker();
+    </script>
+
+</head>
+<body>
+
+
+<div class="ci-page-bg-visual ci-bg-rosemary">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-basilicum">&nbsp;</div>
+
+<div class="ci-page-bg-visual ci-bg-tomatoes">&nbsp;</div>
+
+<section style="height: 100%; min-height: 100%">
+    <div class="fixbg">
+
+
+        <script type="text/javascript">
+            (function (d) {
+                var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement('script');
+                js.id = id;
+                js.async = true;
+                js.src = document.location.protocol + "//connect.facebook.net/en_US/all.js";
+                ref.parentNode.insertBefore(js, ref);
+            }(document));
+            window.fbAsyncInit = function () {
+                var isLoginClick = false;
+                FB.init({ appId: '501365963275166', status: true, cookie: true, xfbml: true });
+                FB.Event.subscribe('auth.statusChange', function (response) {
+                    if (response.authResponse) {
+                        // user has auth'd your app and is logged into Facebook
+                        FB.api('/me', function (me) {
+                            if (me.name) {
+                                document.getElementById('nameUser').value = me.name;
+                                document.getElementById('emailUser').value = me.email;
+                                document.getElementById('auth-email').innerHTML = me.email;
+                                document.getElementById('auth-displayname').innerHTML = me.name;
+                                document.getElementById('nameUsermobile').value = me.name;
+                                document.getElementById('emailUsermobile').value = me.email;
+                                document.getElementById('auth-emailmobile').innerHTML = me.email;
+                                document.getElementById('auth-displaynamemobile').innerHTML = me.name;
+                                if (isLoginClick) {
+                                    $("#loginToSiteBtn").click();
+                                    $("#loginToSiteBtnmobile").click();
+                                }
+                            } else {
+                                isLoginClick = false;
+                            }
+
+                        });
+                        document.getElementById('auth-loggedout').style.display = 'none';
+                        document.getElementById('auth-loggedin').style.display = 'block';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'none';
+                        document.getElementById('auth-loggedinmobile').style.display = 'block';
+                    } else {
+                        // user has not auth'd your app, or is not logged into Facebook
+                        document.getElementById('auth-loggedout').style.display = 'block';
+                        document.getElementById('auth-loggedin').style.display = 'none';
+                        document.getElementById('auth-loggedoutmobile').style.display = 'block';
+                        document.getElementById('auth-loggedinmobile').style.display = 'none';
+                        isLoginClick = false;
+                    }
+                });
+                $("#auth-logoutlink").click(function () { FB.logout(function () { window.location.reload(); }); });
+                $("#lgtoFB").click(function () { FB.login(function () { isLoginClick = true; }, { scope: 'email' }); });
+                $("#lgtosite").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtn").click();
+                });
+                $("#auth-logoutlinkmobile").click(function () { FB.logout(function () { window.location.reload(); }); });
+                $("#lgtoFBmobile").click(function () { FB.login(function () { isLoginClick = true; }, { scope: 'email' }); });
+                $("#lgtositemobile").click(function () {
+                    isLoginClick = true;
+                    $("#loginToSiteBtnmobile").click();
+                });
+            };
+        </script>
+        <div class="pageWrap">
+
+            <header>
+
+                <div class="mobile">
+
+                    <div class="mobile-main-header">
+
+                        <div class="menu-left">
+                            <div class="menu-left-icon"></div>
+
+                        </div>
+                        <div id="branding" role="banner">
+                            <div class="ci-content-positioner">
+                                <a rel="home" href="#">
+                                    <img width="135" height="36" class="ci-sitelogo ci-sitelogo-rpg " alt="PRG logo" src="order/LocalSettings/rink/images/prg-logo.png"></a>
+
+                                <a rel="home" href="#">
+                                    <img width="95" height="89" class="ci-sitelogo ci-sitelogo-main" alt="Logo" src="order/LocalSettings/rink/images/logo.png"></a>
+
+                                <div class="ci-clear">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-in">
+                            <a href="#">Sign In</a>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="mobile-steps-bg">
+                        <span class="step"> Step 1 - <span class="step-mob">Registration</span></span>
+                    </div>
+
+                </div>
+
+
+
+                <section class="clearfix">
+
+
+                    <a href="#" class="logo"></a>
+                    <div height="103px" style="width:">
+
+                        <div style="display: inline; height:103px">
+                            <iframe src="order/LocalSettings/rink/controls/header.html" frameborder="0"
+                                    style="overflow:hidden;overflow-x:hidden;overflow-y:hidden; height: 103px ;width:100%;position:absolute;z-index:0; top:0px;left:0px;right:0px;bottom:0px" scrolling="no"></iframe>
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+            </header>
+
+            <div id="wrap" >
+                <div id="panel">
+                    <div class="pageBlock">
+                        <div class="checkoutSteps">
+                            <ul class="clearfix">
+                                <li>
+                                    <div class="current">
+                                        <p>
+                                            <span class="step-link_number_active_step dot one"></span>
+                                            <span class="step-link_active_text">Registration</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <p>
+                                            <span class="step-link_number_active_step dot two"></span>
+                                                                  <span class="breadcrumb_next_step_text">Date and Time</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="">
+                                        <p>
+                                            <span class="step-link_number_next_step dot three"></span>
+                                            <span class="breadcrumb_next_step_text">Order</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class ="">
+                                        <p>
+                                            <span class="step-link_number_next_step dot four"></span>
+                                            <span class="breadcrumb_next_step_text">Review and Place Order</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>                <div class="">
+                        <div class="clearfix">
+                            <div class="calendar-wrap">
+                                <div class="column left">
+                                    <h2 class="org">
+                                        Availability calendar</h2>
+                                    <div id="ctl00_ContentPlaceHolder1_customerPanel">
+
+
+                                        <div>
+                                            <div class="customerMainInfo" style="float: left;">
+                                                Welcome
+                                                rr
+                                                rrr!
+                                            </div>
+
+                                            <div style="float: right;">
+                                                <div id="ctl00_ContentPlaceHolder1_profile_registerpanel">
+
+                                                    <a href="#" class="registerNow" onclick=" $('.bg_popup').show();" id="register">Update
+                                                        Profile</a>
+
+
+                                                    <div class="bg_popup" style="display:none;">
+                                                        <div class="popupWrapforreg" style="">
+                                                            <a href="#" class="closeLink" onclick=" $('.bg_popup').hide();"></a>
+                                                            <div class="popupContentforreg">
+                                                                Before update profile you should be registered.
+                                                                <br>
+                                                                <br>
+            <span class="envelopeBtn light" style="width: 250px;"><a id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_A1" class="link-second" clientid="<%=ClientID %>" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$A1", "", true, "", "", false, true))'>
+                Register and Update</a></span> <span class="envelopeBtn grey right"><a class="link-second" href="#" onclick=" $('.bg_popup').hide();">
+                                                                Cancel</a></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="popupWrap" style="display:none;">
+                                                            <a href="#" class="closeLink" onclick=" $('.bg_popup').hide();"></a>
+                                                            <div class="popupContent">
+            <span class="title">Update Profile<span class="note"><span class="color">*</span>Means
+                required field</span></span>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        First Name<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$firstName" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_firstName" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_FirstValidator" class="incorrect" style="color:Red;display:none;">Please enter correct first name</span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Last Name<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$lastName" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_lastName" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_LastValidator" class="incorrect" style="color:Red;display:none;">Please enter correct last name</span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row birthday">
+                                                                    <label>
+                                                                        Birthday</label>
+                                                                    <div class="envelopeSelect days">
+                                                                        <div id="cusSelect1SelectArea" class="select-area" style="width: 84px; height: 23px;"><div class="select-area-left"></div><div class="select-area-right"></div><div id="cusSelect1Text" class="select-area-center" style="width: 77px;">01</div><ul id="cusSelect1Options" class="select-options-invisible" style="width: 82px; height: 330px;"><li id="cusSelect1Option0" class="select-option-selected">01</li><li id="cusSelect1Option1">02</li><li id="cusSelect1Option2">03</li><li id="cusSelect1Option3">04</li><li id="cusSelect1Option4">05</li><li id="cusSelect1Option5">06</li><li id="cusSelect1Option6">07</li><li id="cusSelect1Option7">08</li><li id="cusSelect1Option8">09</li><li id="cusSelect1Option9">10</li><li id="cusSelect1Option10">11</li><li id="cusSelect1Option11">12</li><li id="cusSelect1Option12">13</li><li id="cusSelect1Option13">14</li><li id="cusSelect1Option14">15</li><li id="cusSelect1Option15">16</li><li id="cusSelect1Option16">17</li><li id="cusSelect1Option17">18</li><li id="cusSelect1Option18">19</li><li id="cusSelect1Option19">20</li><li id="cusSelect1Option20">21</li><li id="cusSelect1Option21">22</li><li id="cusSelect1Option22">23</li><li id="cusSelect1Option23">24</li><li id="cusSelect1Option24">25</li><li id="cusSelect1Option25">26</li><li id="cusSelect1Option26">27</li><li id="cusSelect1Option27">28</li><li id="cusSelect1Option28">29</li><li id="cusSelect1Option29">30</li><li id="cusSelect1Option30">31</li></ul></div><select name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$vipDay" id="cusSelect1" class="customSelect customSelect-w84" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                                        <option selected="selected" value="1">01</option>
+                                                                        <option value="2">02</option>
+                                                                        <option value="3">03</option>
+                                                                        <option value="4">04</option>
+                                                                        <option value="5">05</option>
+                                                                        <option value="6">06</option>
+                                                                        <option value="7">07</option>
+                                                                        <option value="8">08</option>
+                                                                        <option value="9">09</option>
+                                                                        <option value="10">10</option>
+                                                                        <option value="11">11</option>
+                                                                        <option value="12">12</option>
+                                                                        <option value="13">13</option>
+                                                                        <option value="14">14</option>
+                                                                        <option value="15">15</option>
+                                                                        <option value="16">16</option>
+                                                                        <option value="17">17</option>
+                                                                        <option value="18">18</option>
+                                                                        <option value="19">19</option>
+                                                                        <option value="20">20</option>
+                                                                        <option value="21">21</option>
+                                                                        <option value="22">22</option>
+                                                                        <option value="23">23</option>
+                                                                        <option value="24">24</option>
+                                                                        <option value="25">25</option>
+                                                                        <option value="26">26</option>
+                                                                        <option value="27">27</option>
+                                                                        <option value="28">28</option>
+                                                                        <option value="29">29</option>
+                                                                        <option value="30">30</option>
+                                                                        <option value="31">31</option>
+
+                                                                    </select>
+                                                                    </div>
+                                                                    <div class="envelopeSelect">
+                                                                        <div id="cusSelect2SelectArea" class="select-area" style="width: 166px; height: 23px;"><div class="select-area-left"></div><div class="select-area-right"></div><div id="cusSelect2Text" class="select-area-center" style="width: 159px;">January</div><ul id="cusSelect2Options" class="select-options-invisible" style="width: 164px;"><li id="cusSelect2Option0" class="select-option-selected">January</li><li id="cusSelect2Option1">February</li><li id="cusSelect2Option2">March</li><li id="cusSelect2Option3">April</li><li id="cusSelect2Option4">May</li><li id="cusSelect2Option5">June</li><li id="cusSelect2Option6">July</li><li id="cusSelect2Option7">August</li><li id="cusSelect2Option8">September</li><li id="cusSelect2Option9">October</li><li id="cusSelect2Option10">November</li><li id="cusSelect2Option11">December</li></ul></div><select name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$vipMonth" id="cusSelect2" class="customSelect customSelect-w166" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                                        <option selected="selected" value="January">January</option>
+                                                                        <option value="February">February</option>
+                                                                        <option value="March">March</option>
+                                                                        <option value="April">April</option>
+                                                                        <option value="May">May</option>
+                                                                        <option value="June">June</option>
+                                                                        <option value="July">July</option>
+                                                                        <option value="August">August</option>
+                                                                        <option value="September">September</option>
+                                                                        <option value="October">October</option>
+                                                                        <option value="November">November</option>
+                                                                        <option value="December">December</option>
+
+                                                                    </select>
+                                                                    </div>
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_birthDateValidator" class="incorrect" style="color:Red;display:none;">Please, enter valid Birth Date.</span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Company</label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$company" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_company" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Address 1</label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$address1" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_address1" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Address 2</label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$address2" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_address2" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row zip">
+                                                                    <label>
+                                                                        City/ State/ Zip<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$town" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_town" class="txt w-71 text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+
+                                                                    <div class="envelopeSelect fright state">
+                                                                        <div id="cusSelect3SelectArea" class="select-area" style="width: 82px; height: 23px;"><div class="select-area-left"></div><div class="select-area-right"></div><div id="cusSelect3Text" class="select-area-center" style="width: 75px;">AK</div><ul id="cusSelect3Options" class="select-options-invisible" style="width: 80px; height: 330px;"><li id="cusSelect3Option0" class="select-option-selected">AK</li><li id="cusSelect3Option1">AL</li><li id="cusSelect3Option2">AR</li><li id="cusSelect3Option3">AZ</li><li id="cusSelect3Option4">CA</li><li id="cusSelect3Option5">CO</li><li id="cusSelect3Option6">CT</li><li id="cusSelect3Option7">DC</li><li id="cusSelect3Option8">DE</li><li id="cusSelect3Option9">FL</li><li id="cusSelect3Option10">GA</li><li id="cusSelect3Option11">HI</li><li id="cusSelect3Option12">IA</li><li id="cusSelect3Option13">ID</li><li id="cusSelect3Option14">IL</li><li id="cusSelect3Option15">IN</li><li id="cusSelect3Option16">KS</li><li id="cusSelect3Option17">KY</li><li id="cusSelect3Option18">LA</li><li id="cusSelect3Option19">MA</li><li id="cusSelect3Option20">MD</li><li id="cusSelect3Option21">ME</li><li id="cusSelect3Option22">MI</li><li id="cusSelect3Option23">MN</li><li id="cusSelect3Option24">MO</li><li id="cusSelect3Option25">MS</li><li id="cusSelect3Option26">MT</li><li id="cusSelect3Option27">NC</li><li id="cusSelect3Option28">ND</li><li id="cusSelect3Option29">NE</li><li id="cusSelect3Option30">NH</li><li id="cusSelect3Option31">NJ</li><li id="cusSelect3Option32">NM</li><li id="cusSelect3Option33">NV</li><li id="cusSelect3Option34">NY</li><li id="cusSelect3Option35">OH</li><li id="cusSelect3Option36">OK</li><li id="cusSelect3Option37">OR</li><li id="cusSelect3Option38">OT</li><li id="cusSelect3Option39">PA</li><li id="cusSelect3Option40">PR</li><li id="cusSelect3Option41">RI</li><li id="cusSelect3Option42">SC</li><li id="cusSelect3Option43">SD</li><li id="cusSelect3Option44">TN</li><li id="cusSelect3Option45">TX</li><li id="cusSelect3Option46">UT</li><li id="cusSelect3Option47">VA</li><li id="cusSelect3Option48">VI</li><li id="cusSelect3Option49">VT</li><li id="cusSelect3Option50">WA</li><li id="cusSelect3Option51">WI</li><li id="cusSelect3Option52">WV</li><li id="cusSelect3Option53">WY</li></ul></div><select name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$state" id="cusSelect3" class="customSelect customSelect-w82" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                                        <option selected="selected" value="2">AK</option>
+                                                                        <option value="1">AL</option>
+                                                                        <option value="4">AR</option>
+                                                                        <option value="3">AZ</option>
+                                                                        <option value="5">CA</option>
+                                                                        <option value="6">CO</option>
+                                                                        <option value="7">CT</option>
+                                                                        <option value="9">DC</option>
+                                                                        <option value="8">DE</option>
+                                                                        <option value="10">FL</option>
+                                                                        <option value="11">GA</option>
+                                                                        <option value="12">HI</option>
+                                                                        <option value="16">IA</option>
+                                                                        <option value="13">ID</option>
+                                                                        <option value="14">IL</option>
+                                                                        <option value="15">IN</option>
+                                                                        <option value="17">KS</option>
+                                                                        <option value="18">KY</option>
+                                                                        <option value="19">LA</option>
+                                                                        <option value="22">MA</option>
+                                                                        <option value="21">MD</option>
+                                                                        <option value="20">ME</option>
+                                                                        <option value="23">MI</option>
+                                                                        <option value="24">MN</option>
+                                                                        <option value="26">MO</option>
+                                                                        <option value="25">MS</option>
+                                                                        <option value="27">MT</option>
+                                                                        <option value="34">NC</option>
+                                                                        <option value="35">ND</option>
+                                                                        <option value="28">NE</option>
+                                                                        <option value="30">NH</option>
+                                                                        <option value="31">NJ</option>
+                                                                        <option value="32">NM</option>
+                                                                        <option value="29">NV</option>
+                                                                        <option value="33">NY</option>
+                                                                        <option value="36">OH</option>
+                                                                        <option value="37">OK</option>
+                                                                        <option value="38">OR</option>
+                                                                        <option value="54">OT</option>
+                                                                        <option value="39">PA</option>
+                                                                        <option value="40">PR</option>
+                                                                        <option value="41">RI</option>
+                                                                        <option value="42">SC</option>
+                                                                        <option value="43">SD</option>
+                                                                        <option value="44">TN</option>
+                                                                        <option value="45">TX</option>
+                                                                        <option value="46">UT</option>
+                                                                        <option value="49">VA</option>
+                                                                        <option value="48">VI</option>
+                                                                        <option value="47">VT</option>
+                                                                        <option value="50">WA</option>
+                                                                        <option value="52">WI</option>
+                                                                        <option value="51">WV</option>
+                                                                        <option value="53">WY</option>
+
+                                                                    </select>
+                                                                    </div>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$postcode" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_postcode" class="txt w-144 text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_zipValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Phone<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$phone" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_phone" class="txt text-placeholder" errorcssclass="txt wrong" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span style="font-size: 12px; float: left; display: none;">ext.</span>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$phoneExtention" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_phoneExtention" class="txt text-placeholder" maxlength="4" onchange="ChangeHideInputValue(this , &quot;1&quot;);" style="display: none;">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_PhoneValidator2" class="incorrect" style="color:Red;display:none;">Please enter correct Phone.</span>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Email<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$email" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_email" class="txt text-placeholder" oncopy="return false;" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_emailValidator2" class="incorrect" style="color:Red;display:none;">A profile with this email already exists in the system.</span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>Verify Email<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$emailVerify" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_emailVerify" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_emailVerifyValidator2" class="incorrect" style="color:Red;display:none;">Enter correct email</span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Password<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$password" type="password" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_password" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_passwordValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Confirm Password<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$confirm" type="password" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_confirm" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Security Question<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$question" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_question" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_CustomQuestionValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <label>
+                                                                        Security Answer<span class="color">*</span></label>
+                                                                    <input name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$answer" type="text" id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_answer" class="txt text-placeholder" onchange="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    <span id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_CustomAnswerValidator" class="incorrect" style="color:Red;display:none;"></span>
+                                                                    <div class="clear">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div style="float: left; margin-top: 9px; margin-right: 10px;">
+                                                                        <input id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_IsSubscriber" type="checkbox" name="ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$IsSubscriber" onclick="ChangeHideInputValue(this , &quot;1&quot;);">
+                                                                    </div>
+                                                                    <label id="forsubscribe">
+                                                                        <b>Subscribe To Emails</b></label>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <span class="envelopeBtn light fleft"><a id="ctl00_ContentPlaceHolder1_profile_ChangeDelailsForm_signUp" class="link-second" clientid="<%=ClientID %>" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$profile$ChangeDelailsForm$signUp", "", true, "", "", false, true))'>Update</a></span>
+                <span class="envelopeBtn grey fright"><a class="link-second" href="#" onclick=" $('.bg_popup').hide();">
+                    Cancel</a></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <script type="text/javascript">
+                                                        $(document).ready(function() {
+                                                            $("#closeregister").click(function() {
+                                                                $('.bg_popup').hide();
+                                                                return false;
+                                                            });
+                                                        });
+                                                    </script>
+
+
+                                                    <script type="text/javascript">
+                                                        initDropdown();
+                                                    </script>
+
+
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="clear">
+                                        </div>
+
+
+                                    </div>
+
+                                    Location:
+                                    6/5/2015 6:26:16 AM
+
+                                    <p>
+                                        <span style="padding-bottom:10px;display:block;"></span>
+                                        <span id="ctl00_ContentPlaceHolder1_ReservationTitle" style="color: rgb(125, 160, 2); margin-left:18px; margin-top:15px; display:block;"><span style="padding-left:18px;padding-bottom:5px;color: rgb(49, 49, 49);">Ticket Price: $32.00</span></span>
+
+                                        <br>
+                                        <span style="color: rgb(49, 49, 49); font-family: Oxygen; font-size: 14px;">Please select the date you would like to book your reservation.</span>
+
+                                    </p>
+
+                                    <div class="calendar">
+                                        <div id="sessionCalendar">
+                                            <div class="calendar" style="display: block;"><table cellspacing="0" cellpadding="0"><thead><tr><td colspan="7" class="title" style="display: none;">June, 2015</td></tr><tr class="headrow"><td colspan="1" class="calendar-button nav prevMonth"></td><td colspan="5" class="calendar-button">June, 2015</td><td colspan="1" class="calendar-button nav nextMonth"></td></tr><tr class="daynames"><td class="name day weekend">Sun</td><td class="day name">Mon</td><td class="day name">Tue</td><td class="day name">Wed</td><td class="day name">Thu</td><td class="day name">Fri</td><td class="name day weekend">Sat</td></tr></thead><tbody><tr class="daysrow"><td class="day">&nbsp;</td><td class="day">1</td><td class="day">2</td><td class="day">3</td><td class="day">4</td><td class="">5<span>Today</span></td><td class="">6</td></tr><tr class="daysrow"><td class="g-a">7</td><td class="">8</td><td class="">9</td><td class="">10</td><td class="">11</td><td class="">12</td><td class="">13</td></tr><tr class="daysrow"><td class="g-a">14</td><td class="">15</td><td class="">16</td><td class="">17</td><td class="">18</td><td class="">19</td><td class="">20</td></tr><tr class="daysrow"><td class="g-a">21</td><td class="">22</td><td class="">23</td><td class="">24</td><td class="">25</td><td class="">26</td><td class="">27</td></tr><tr class="daysrow"><td class="">28</td><td class="">29</td><td class="">30</td><td class="day">&nbsp;</td><td class="day">&nbsp;</td><td class="day">&nbsp;</td><td class="day">&nbsp;</td></tr><tr class="emptyrow" style="display: none;"><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></div></div>
+                                        <ul class="legend">
+                                            <li><span class="g-a">Good Availability</span></li>
+                                            <li><span class="l-a">Limited Availability </span></li>
+                                            <li><span class="s-o">Sold Out</span></li>
+                                            <li><span class="n-a">N/A</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="column right">
+                                    <h2 class="org">
+                                        Current availability</h2>
+                                    <p></p>
+                                    <div class="calendar">
+                                        <table id="sessionInfos" cellpadding="0" cellspacing="0" width="414">
+                                            <thead>
+                                            <tr>
+                                                <th colspan="3">
+                                                    <div>
+                                                        <h3>Sunday, June 7, 2015</h3>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                            <tr class="days">
+                                                <th width="123">
+                                                    <span>Time</span>
+                                                </th>
+                                                <th width="149">
+                                                    <span>Availability</span>
+                                                </th>
+                                                <th width="138">
+                                                    <span>Reserve</span>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody><tr class="noteRow"><td class="first">11:00 AM</td><td>30</td><td class="last"><span class="envelopeBtn"><a class="link" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$ReserveButton", "", true, "", "", false, true))'>Reserve</a><input type="hidden" value="1264912"></span></td></tr><tr class="noteRow"><td class="first">12:00 PM</td><td>30</td><td class="last"><span class="envelopeBtn"><a class="link" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$ReserveButton", "", true, "", "", false, true))'>Reserve</a><input type="hidden" value="1264918"></span></td></tr><tr class="noteRow"><td class="first">01:00 PM</td><td>28</td><td class="last"><span class="envelopeBtn"><a class="link" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$ReserveButton", "", true, "", "", false, true))'>Reserve</a><input type="hidden" value="1264924"></span></td></tr><tr class="noteRow"><td class="first">02:00 PM</td><td>30</td><td class="last"><span class="envelopeBtn"><a class="link" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$ReserveButton", "", true, "", "", false, true))'>Reserve</a><input type="hidden" value="1264930"></span></td></tr></tbody></table>
+                                    </div>
+
+                                    <div id="ctl00_ContentPlaceHolder1_currentLocationPanel">
+
+                                        <a id="ctl00_ContentPlaceHolder1_ReserveButton" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder1$ReserveButton", "", true, "", "", false, true))'></a>
+                                        <input type="hidden" name="ctl00$ContentPlaceHolder1$CurrentSessionId" id="ctl00_ContentPlaceHolder1_CurrentSessionId">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-wrapper">
+            <iframe src="order/LocalSettings/rink/controls/footer.html" frameborder="0" width="100%" name="FrameFooter" scrolling="no" class="footerIframe"  style="height: 352px;"></iframe>
+        </div>
+
+
+    </div>
+</section>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+<script src="order/Scripts/libs/bootstrap-datepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap-timepicker.js"></script>
+<script src="order/Scripts/libs/bootstrap.js"></script>
+
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.2.min.js">\x3C/script>')</script>
+
+<script src="order/Scripts/plugins.js"></script>
+<script src="order/Scripts/main.js"></script>
+
+<script type="text/javascript">
+    var onSuccess = function (result) {
+        if (result.url) {
+            window.location.href = result.url;
+        }
+    };
+
+    (function initializeForgetPassword() {
+        $(document).on('click', '.forgot-password', function () {
+            $("#forgotPass").toggle();
+        });
+    })();
+
+</script>
+
+
+</body>
+</html>
+
