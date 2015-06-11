@@ -66,4 +66,7 @@ textarea {
 	clear: both
 }
 
-/*MAIN PAGE*/
+span.blast {
+  display: inline-block;
+  opacity: 0;
+}

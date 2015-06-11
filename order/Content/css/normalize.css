@@ -33,7 +33,7 @@ audio:not([controls]) {
    Base CSS for html tags
    ========================================================================== */
 
-html { background: #fff; color: #000; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { color: #000; font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 html, button, input, select, textarea { font-family: sans-serif; }
 

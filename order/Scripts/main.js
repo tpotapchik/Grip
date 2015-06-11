@@ -617,6 +617,7 @@ function SubmitHiddenRadioMobile(elem) {
 }
 
 function ValidateSelections() {
+	$('#submitButton').attr('disabled', 'disabled');
     var isNotMobile = ($('.notMobile').css('display') == 'block');
     var selections = null;
     if (isNotMobile) {
