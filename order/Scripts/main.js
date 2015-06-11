@@ -64,6 +64,7 @@ $(this).prev().click();}
             // Animation complete.
         });
     });
+
     $('.menu-left-icon').click(function(){
         $('.mobile-menu').fadeIn(400);
     });
@@ -132,7 +133,6 @@ parent.prepend( cl);
             $('.orderTaker').show();
             $('.steps').css('width', 'auto');
         }
-
 
 
         if (isBreakPoint(10000)) {
