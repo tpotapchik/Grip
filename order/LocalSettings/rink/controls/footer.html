@@ -39,18 +39,20 @@
             color: #000000;
             margin-bottom: 20px;
         }
+        .footerIn_left {
+            float: left;
+        }
+        .footerIn_right {
+            float: right;
+        }
 
         .envelopeFooter .footerIn .copyright {
-            display: block;
-            float: left;
             font-size: 14px;
         }
 
         .envelopeFooter .footerIn .privacy {
             color: #000000;
-            display: block;
-            float: left;
-            font-size: 14px;
+             font-size: 14px;
             text-decoration: none;
         }
 
@@ -63,14 +65,49 @@
             color: #000000;
             font-size: 12px;
             text-decoration: none;
-            display: block;
-            float: right;
         }
 
         .envelopeFooter .footerIn .poweredBy a {
             color: #000000;
             text-decoration: underline;
         }
+
+        @media all and (min-width: 880px) and (max-width: 1000px) {
+            .footerIn_right {
+                float: left;
+                margin-left: 10px;
+            }
+        }
+
+        @media all and (min-width: 320px) and (max-width: 1000px) {
+            .envelopeFooter .footerIn {
+                background: #e3e3e3;
+                width: auto;
+                min-width: 320px;
+            }
+
+
+        }
+        @media all and (min-width: 320px) and (max-width: 880px) {
+            .footerIn_right,.footerIn_left {
+                float: none;
+
+            }
+            .poweredBy {
+                display: block;
+                float: none;
+                margin-top: 5px;
+            }
+            .envelopeFooter .footerIn {
+                height: 65px;
+            }
+            .envelopeFooter {
+                height: 65px;
+                margin: -65px auto;
+            }
+
+        }
+
 
     </style>
 </head>
@@ -82,12 +119,20 @@
 
     <div class="customBottomLinks">
         <div class="envelopeFooter">
-            <div class="footerIn"><span class="copyright">© 2015 PRG All Rights Reserved</span><span class="privacy">&nbsp; |&nbsp; <a href="/privacypolicy_cp.aspx">Privacy
-                Policy</a>&nbsp;&nbsp;</span>
-                <span class="poweredBy">Online Takeout System Powered by <a href="http://www.smartertakeout.com/" target="_blank" title="Smarter Takeout">Smarter
+            <div class="footerIn">
+                <div class="footerIn_left">
+                    <span class="copyright">© 2015 PRG All Rights Reserved</span>
+                    <span class="privacy">&nbsp; |&nbsp; <a href="/privacypolicy_cp.aspx">Privacy
+                    Policy</a>&nbsp;&nbsp;</span>
+                </div>
+                <div class="footerIn_right">
+                    <span class="poweredBy"> Online Takeout System Powered by <a href="http://www.smartertakeout.com/" target="_blank" title="Smarter Takeout">Smarter
                     Takeout
-                    ®</a> | A product of <a href="http://www.itproblemsolver.com" target="_blank" title="IT Problem Solver, Inc.">IT
-                    Problem Solver, Inc.</a></span></div>
+                    ®</a> | </span>
+                    <span  class="poweredBy">A product of <a href="http://www.itproblemsolver.com" target="_blank" title="IT Problem Solver, Inc.">IT
+                        Problem Solver, Inc.</a></span>
+                </div>
+            </div>
         </div>
     </div>
 

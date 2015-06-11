@@ -1920,6 +1920,80 @@ input.txt2 {
 
 /*MAIN PAGE*/
 
+.mobile-menu {
+    position: absolute;
+    padding: 10px 0;
+    top: 0;
+    left: 0;
+    background-color: #222021;
+    width: 161px;
+    box-shadow: 0 0 8px 2px #a6a6a6;
+    z-index: 1000;
+    height: 100%;
+    display: none;
+}
+.icon-close {
+    width: 17px;
+    height: 16px;
+    background: url("../images/rink-sprite.png") -149px -112px no-repeat;
+    margin: 30px 20px 34px;
+    cursor: pointer;
+}
+.mobile-nav {
+    padding: 0;
+    list-style: none;
+}
+.mobile-nav li {
+    padding: 0 20px;
+}
+.mobile-nav li:hover {
+    background-color:#9eb80c;
+}
+.mobile-nav li:hover a {
+    color:#fff;
+}
+.mobile-nav li a {
+    color:#9eb80c;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 40px;
+}
+.mobile-signed-in {
+    font-size: 16px;
+    font-weight: 700;
+    border-top: 1px solid #4b4a4c;
+    border-bottom: 1px solid #4b4a4c;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+
+}
+.mobile-signed-in ._title {
+    color:#6d6e72;
+    margin-bottom: 5px;
+}
+.mobile-signed-in .name a {
+    color:#9eb80c;
+
+}
+.mobile-social-icons {
+    text-align: center;
+}
+.mobile-social-icons a {
+    padding: 0 5px;
+    background-image: url("../images/rink-sprite.png");
+    width: 27px;
+    height: 26px;
+    display: inline-block;
+    vertical-align: top;
+}
+.mobile-social-icons .fb {
+    background-position: -170px -112px;
+}
+.mobile-social-icons .tw {
+    background-position: -170px -141px;
+}
 
 .top-content {
     background: url("../images/steps-background.png") no-repeat scroll 0 0 #FFFFFF !important;
@@ -1938,6 +2012,16 @@ input.txt2 {
 .top-content img {
     margin-bottom: 10px;
     margin-top: 10px;
+}
+.top-content .read-more {
+    display: none;
+    background-color: #d4dce2;
+    font-size: 14px;
+    color:#313131;
+    padding: 11px 46px;
+    text-decoration: none;
+    margin-bottom: 30px;
+
 }
 h1.title-about {
     font-size: 18px;
@@ -3360,10 +3444,7 @@ footer > section p a {
     .btn04 {
         display: none;
     }
-    .envelopeFooter .footerIn {
-        width: auto;
-        min-width: 0;
-    }
+
     .banner-box .CarouSlide {
         float: none;
         width: 100%;
@@ -3510,6 +3591,12 @@ footer > section p a {
         width: 200px;
         height: auto;
     }
+    .top-content .hidden-block {
+        display: none;
+    }
+    .top-content .read-more {
+        display: inline-block;
+    }
 
 
     .orderHeader {
@@ -3556,6 +3643,9 @@ footer > section p a {
         display: block;
         margin-left: -20px;
     }
+    .pageWrap {
+        background: none!important;
+    }
 
     .pageWrap > header {
         /*background: url(../images/hdr_mobile_2x.jpg) repeat-x 0 0;*/
@@ -3570,19 +3660,14 @@ footer > section p a {
 
     .pageBlock {
         width: 100% !important;
-
         padding: 0% !important;
         margin: 0 !important;
     }
 
     .pageBlock .clearfix:nth-child(1) {
-
         margin: 0 !important;
-
         width: 96% !important;
-
         padding: 0 2%;
-
     }
 
     .stepCustomize {
@@ -3822,10 +3907,6 @@ footer > section p a {
         padding: 0;
     }
 
-    /*.stepRegistration .tip-star {
-  position: absolute;
-  right: -10px;
-  }*/
     .stepRegistration p {
         padding-left: 10px;
     }
@@ -4079,6 +4160,19 @@ footer > section p a {
         left: 10px;
         top: 22px;
     }
+    .icon-close {
+        margin: 10px 10px 39px;
+    }
+    .mobile-nav li {
+        padding: 0 10px;
+    }
+    .info-box-wrapper,.banner-box {
+        padding: 0 10px;
+    }
+    .mobile-signed-in {
+      padding: 15px 10px;
+    }
+
 
     .mobile #branding {
         width: 145px;

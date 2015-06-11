@@ -55,6 +55,22 @@ $(this).prev().click();}
         }
     }
 
+    $('.top-content .read-more').click (function(){
+        $('.top-content .hidden-block').toggle("slow" );
+    });
+
+    $( "#clickme" ).click(function() {
+        $( "#book" ).toggle( "slow", function() {
+            // Animation complete.
+        });
+    });
+    $('.menu-left-icon').click(function(){
+        $('.mobile-menu').fadeIn(400);
+    });
+    $('.icon-close').click(function(){
+        $('.mobile-menu').fadeOut(400);
+    });
+
     $(window).resize(function () {
         function isBreakPoint(currentPoint) {
             var currentPointAr = [0, 640, 980, 10000];
