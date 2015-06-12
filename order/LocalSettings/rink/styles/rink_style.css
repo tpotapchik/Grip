@@ -3632,8 +3632,13 @@ footer > section p a {
         margin: 36px 18px 0 0;
     }
     .mobile-h1 {
-        display: none;
+        display: none!important;
     }
+    .faq-block {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
     .faq-block h2{
         font-size: 16px;
         font-weight: 700;
